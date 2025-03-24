@@ -1,6 +1,6 @@
 
 :gitroot{
-    color:#83d5f6
+    --main-color:#83d5f6;
 }
 
 * {
@@ -59,7 +59,7 @@ header {
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    background: #83d5f6;
+    background:var(--main-color);
     color: #000;
     cursor: pointer;
     border-top-right-radius: 4px;
