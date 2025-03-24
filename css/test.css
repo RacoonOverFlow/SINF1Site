@@ -27,7 +27,7 @@ header {
 }
 
 .nav-search {
-    margin-left: auto;
+    margin: auto;
     display: flex;
     justify-content: space-evenly;
     max-width: 620px;
