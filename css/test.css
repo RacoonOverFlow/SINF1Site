@@ -1,0 +1,67 @@
+
+:gitroot{
+    color:#83d5f6
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #111319;
+}
+
+header {
+    width: 100%;
+    background-color: white;
+}
+
+.logo {
+    height: 70px;
+    width: auto;
+}
+
+.nav-search {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 620px;
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.select-search {
+    background: #f3f3f3;
+    width: 50px;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: none;
+}
+
+.search-input {
+    max-width: 600px;
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+
+.search-icon {
+    max-width: 45px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    background: #83d5f6;
+    color: #000;
+    cursor: pointer;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
