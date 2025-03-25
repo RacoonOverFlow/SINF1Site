@@ -1,24 +1,28 @@
-
-:gitroot{
-    --main-color:#83d5f6;
+:root {
+    --main-color: #83D5F6;
+    --highlight-color: #8d7ab1;
+    --text-light: #ffffff;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
 }
 
 html {
     scroll-behavior: smooth;
-    background-color: #111319;
+    background-color: white;
 }
 
+/* Header */
 header {
     width: 100%;
     background-color: white;
     display: flex;
+    padding: 10px 20px;
 }
 
 .logo {
@@ -41,8 +45,7 @@ header {
     background: #f3f3f3;
     width: 50px;
     text-align: center;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+    border-radius: 4px 0 0 4px;
     border: none;
 }
 
@@ -62,9 +65,133 @@ header {
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    background:#83d5f6;
+    background: var(--main-color);
     color: #000;
     cursor: pointer;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-radius: 0 4px 4px 0;
+}
+
+.dashboard {
+    background: var(--main-color);
+    padding: 15px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.dashboard ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.dashboard ul li {
+    padding: 0 10px;
+    font-size: 2rem;
+    color: var(--text-light);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.dashboard ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.dashboard ul li.limited a,
+.dashboard ul li.on-sale a {
+    color: #8d7ab1;
+}
+
+.dashboard ul .more {
+    display: flex;
+    align-items: center;
+}
+
+.hamburger.material-symbols-outlined {
+    font-size: 3rem;
+}
+
+.dashboard ul .divider {
+    color: white;
+    padding: 0 10px;
+}
+
+.spring-sale {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background: url('../Images/springsale_background.png') no-repeat center center;
+    background-size: contain;
+    height: 800px;
+    width: 100%;
+    color: #fff;
+    position: relative;
+}
+
+.sale-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.sale-text h1 {
+    font-size: 12rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: -3px -3px 0 #8d7ab1, 3px -3px 0 #8d7ab1, -3px 3px 0 #8d7ab1, 3px 3px 0 #8d7ab1;
+}
+
+.sale-text .sale-info {
+    font-family: "Bangers", sans-serif;
+    font-size: 7rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: -3px -3px 0 #8d7ab1, 3px -3px 0 #8d7ab1, -3px 3px 0 #8d7ab1, 3px 3px 0 #8d7ab1;
+}
+
+.shop-now {
+    background: var(--main-color);
+    color: #ffffff;
+    border: none;
+    padding: 30px 60px;
+    font-size: 4rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-shadow: -3px -3px 0 #8d7ab1, 3px -3px 0 #8d7ab1, -3px 3px 0 #8d7ab1, 3px 3px 0 #8d7ab1;
+}
+
+.more-categories {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    top: 170px;
+}
+
+.more-categories ul {
+    padding: 0;
+    list-style: none;
+}
+
+.more-categories ul li {
+    padding: 10px;
+}
+
+.more-categories ul li a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+
+.more-categories ul li a:hover {
+    background-color: #f1f1f1;
 }
