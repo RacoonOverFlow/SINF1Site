@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUAG</title>
+    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+</head>
+
+<body>
+<header>
+    <div>
+        <img class="logo" src="Images/Logo.png" alt="logo">
+    </div>
+    <div class="nav-search">
+        <select class="select-search">
+            <option>All</option>
+            <option>All Categories</option>
+        </select>
+        <input type="text" placeholder="Search" class="search-input">
+        <div class="search-icon">
+            <span class="material-symbols-outlined">search</span>
+        </div>
+    </div>
+</header>
+
+<nav class="dashboard">
+    <ul>
+        <li><a href="miniatures.html">Miniatures</a></li>
+        <li class="divider">|</li>
+        <li><a href="stamps.html">Stamps</a></li>
+        <li class="divider">|</li>
+        <li><a href="coins.html">Coins</a></li>
+        <li class="divider">|</li>
+        <li><a href="comics.html">Comics</a></li>
+        <li class="divider">|</li>
+        <li><a href="cards.html">Cards</a></li>
+        <li class="divider">|</li>
+        <li class="limited"><a href="limited.html">LIMITED</a></li>
+        <li class="divider">|</li>
+        <li class="on-sale"><a href="on-sale.html">ON SALE!</a></li>
+        <li class="divider">|</li>
+        <li class="more">
+            <span class="hamburger material-symbols-outlined">menu</span> More
+        </li>
+    </ul>
+</nav>
+
+<div class="more-categories" id="more-categories">
+    <ul>
+        <li><a href="category1.html">Category 1</a></li>
+        <li><a href="category2.html">Category 2</a></li>
+        <li><a href="category3.html">Category 3</a></li>
+        <li><a href="category4.html">Category 4</a></li>
+    </ul>
+</div>
+
+<main>
+    <section class="spring-sale">
+        <div class="sale-text">
+            <h1>SPRING SALE</h1>
+            <p class="sale-info">60% OFF I UP TO 11TH MAY</p>
+            <button class="shop-now" onclick="window.location.href='your-target-page.html';">SHOP NOW</button>
+        </div>
+    </section>
+</main>
+
+<script>
+    document.querySelector('.more').addEventListener('click', function () {
+        const dropdown = document.getElementById('more-categories');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+</script>
+</body>
+</html>
