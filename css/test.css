@@ -76,6 +76,7 @@ header {
   padding: 15px 0;
   text-align: center;
   width: 100%;
+  font-weight: bold;
 }
 
 .dashboard ul {
@@ -206,36 +207,45 @@ header {
 
 .cards {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
 }
 
 .coins {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
 }
 
 .comics {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
 }
 
 .miniatures {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
 }
 
 .stamps {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
 }
 
 .events {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
 }
 
 .collections {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
 }
 
 .menu {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
 }
 
 .more {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
 }
