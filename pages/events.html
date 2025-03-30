@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QUAG</title>
-    <link rel="stylesheet" href="css/test.css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/test.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
@@ -18,12 +18,11 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
     />
   </head>
-
   <body>
     <header>
       <div>
-        <a href="index.html"
-          ><img class="logo" src="Images/Logo.png" alt="logo" href="index.html"
+        <a href="../index.html"
+          ><img class="logo" src="../Images/Logo.png" alt="logo"
         /></a>
       </div>
       <div class="nav-search">
@@ -40,20 +39,20 @@
 
     <nav class="dashboard">
       <ul>
-        <li><a href="pages/miniatures.html">Miniatures</a></li>
+        <li><a href="miniatures.html">Miniatures</a></li>
         <li class="divider">|</li>
-        <li><a href="pages/stamps.html">Stamps</a></li>
+        <li><a href="stamps.html">Stamps</a></li>
         <li class="divider">|</li>
-        <li><a href="pages/coins.html">Coins</a></li>
+        <li><a href="coins.html">Coins</a></li>
         <li class="divider">|</li>
-        <li><a href="pages/comics.html">Comics</a></li>
+        <li><a href="comics.html">Comics</a></li>
         <li class="divider">|</li>
-        <li><a href="pages/cards.html">Cards</a></li>
+        <li><a href="cards.html">Cards</a></li>
         <li class="divider">|</li>
-        <li class="limited"><a href="pages/events.html">Events</a></li>
+        <li class="events"><a href="events.html">Events</a></li>
         <li class="divider">|</li>
-        <li class="on-sale">
-          <a href="pages/collections.html">My Collections</a>
+        <li class="collections">
+          <a href="collections.html">My Collections</a>
         </li>
         <li class="divider">|</li>
         <li class="more">
@@ -61,7 +60,6 @@
         </li>
       </ul>
     </nav>
-
     <div class="more-categories" id="more-categories">
       <ul>
         <li><a href="category1.html">Category 1</a></li>
@@ -70,28 +68,12 @@
         <li><a href="category4.html">Category 4</a></li>
       </ul>
     </div>
-
-    <main>
-      <section class="spring-sale">
-        <div class="sale-text">
-          <h1>BANKAI SEASON 2</h1>
-          <p class="sale-info">Watch party - 15/04</p>
-          <button
-            class="shop-now"
-            onclick="window.location.href='your-target-page.html';"
-          >
-            See More
-          </button>
-        </div>
-      </section>
-    </main>
-
-    <script>
-      document.querySelector(".more").addEventListener("click", function () {
-        const dropdown = document.getElementById("more-categories");
-        dropdown.style.display =
-          dropdown.style.display === "block" ? "none" : "block";
-      });
-    </script>
   </body>
+  <script>
+    document.querySelector(".more").addEventListener("click", function () {
+      const dropdown = document.getElementById("more-categories");
+      dropdown.style.display =
+        dropdown.style.display === "block" ? "none" : "block";
+    });
+  </script>
 </html>
