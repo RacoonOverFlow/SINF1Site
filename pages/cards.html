@@ -73,6 +73,63 @@
         margin-top: 15px; /* Space above the line */
         margin-bottom: 20px; /* Space below the line */
       }
+
+      .collection_container {
+        display: flex; /* Use flexbox for horizontal alignment */
+        flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+        gap: 20px; /* Add space between the boxes */
+        justify-content: flex-start; /* Align boxes to the left */
+        padding-left: 20px; /* Add 20px padding to the left of the container */
+      }
+
+      .collection_box_primary {
+        background-color: #d7f4ff;
+        padding: 20px; /* Increased padding for better spacing */
+        width: 260px; /* Set a fixed width */
+        text-align: center;
+        border-radius: 10px;
+      }
+
+      .collection_box_secondary {
+          background-color: #aad5e6;
+          padding: 15px;
+          width: 180px;
+          text-align: center;
+          border-radius: 10px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+
+      .collection_image {
+          display: flex; /* Use flexbox for alignment */
+          justify-content: center; /* Center horizontally */
+          align-items: center; /* Center vertically */
+          height: 180px; /* Match the height of the box */
+      }
+
+      .collection_text {
+          text-align: center; /* Center the text horizontally */
+          line-height: 1.5; /* Adjust line height for better spacing */
+          margin-top: 10px; /* Add space between the image and text */
+      }
+
+      .collection_text a {
+          text-decoration: none; /* Remove underline from links */
+          color: #83d5f6; /* Ensure the link inherits the text color */
+      }
+
+      .icon-container {
+        display: flex; /* Align icons horizontally */
+        justify-content: center; /* Center the icons */
+        gap: 15px; /* Add space between the icons */
+        margin-top: 10px; /* Add space above the icons */
+      }
+
+      .icon-container img {
+        width: 40px; /* Set icon width */
+        height: 40px; /* Set icon height */
+        cursor: pointer; /* Change cursor to pointer for interactivity */
+      }
     </style>
   </head>
   <link rel="stylesheet" href="../css/test.css" />
@@ -161,6 +218,43 @@
     </section>
     <hr class="filters-hr" />
 
+    <section class="collection_container">
+      <div class="collection_box_primary">
+        <div class="collection_box_secondary">
+          <div class="collection_image">
+              <img src="../Images/cards/pokemon/Mew-cbr11.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
+          </div>
+        </div>
+        <div class="collection_text">
+            <a href="#mew.html"><h1><strong>Mew</strong></h1></a>
+            <a href="#mew.html"><h1><strong>XXXXXXX Edition</strong></h1></a>
+        </div>
+        <div class="icon-container">
+          <img src="../Images/icons/favorite.png" alt="Favorite Icon">
+          <img src="../Images/icons/search.png" alt="Search Icon">
+          <img src="../Images/icons/photos.png" alt="Photos Icon">
+          <img src="../Images/icons/more.png" alt="More Icon">
+        </div>
+      </div>
+
+      <div class="collection_box_primary">
+        <div class="collection_box_secondary">
+          <div class="collection_image">
+              <img src="../Images/cards/pokemon/Mew-cbr11.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
+          </div>
+        </div>
+        <div class="collection_text">
+            <a href="#mew.html"><h1><strong>Mew</strong></h1></a>
+            <a href="#mew.html"><h1><strong>XXXXXXX Edition</strong></h1></a>
+        </div>
+        <div class="icon-container">
+          <img src="../Images/icons/favorite.png" alt="Favorite Icon">
+          <img src="../Images/icons/search.png" alt="Search Icon">
+          <img src="../Images/icons/photos.png" alt="Photos Icon">
+          <img src="../Images/icons/more.png" alt="More Icon">
+        </div>
+      </div>
+    </section>
     <script>
       const subcategoryOptions = {
         pokemon: ["Pikachu", "Charizard", "Bulbasaur"],
