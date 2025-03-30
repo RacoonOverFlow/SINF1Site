@@ -4,6 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cards</title>
+
+    <style>
+      .category-dropdown {
+        width: 200px;
+        height: 40px;
+        background-color: #83d5f6; /* Default background for the selected option */
+        color: white; /* Text color */
+        border: none; /* Remove black outline */
+        outline: none; /* Remove focus outline */
+        font-size: 24px; /* Increase font size */
+      }
+
+      .category-dropdown option {
+        background-color: #aad5e6; /* Background for dropdown options */
+        color: white; /* Text color for options */
+        font-size: 18px;
+      }
+
+      .category-dropdown option:checked {
+        background-color: #83d5f6; /* Background for the selected option */
+      }
+
+      .filters {
+        display: flex; /* Use flexbox to align items horizontally */
+        gap: 20px; /* Add space between the dropdowns */
+        margin-top: 20px; /* Add some space above the filters section */
+        margin-left: 20px; /* Add some space to the left */
+      }
+
+      .styled-checkbox {
+        width: 40px; /* Increased width */
+        height: 40px; /* Increased height */
+        appearance: none; /* Remove default checkbox styling */
+        border: 2px solid #83d5f6; /* Border color */
+        border-radius: 4px; /* Optional: rounded corners */
+        cursor: pointer;
+      }
+
+      .styled-checkbox:checked {
+        background-color: #83d5f6; /* Fill color when checked */
+        border-color: #83d5f6; /* Border color when checked */
+      }
+
+      .checkbox-container {
+        display: flex; /* Align checkboxes horizontally */
+        flex-wrap: wrap; /* Allow checkboxes to wrap to the next line */
+        gap: 38px; /* Add space between checkboxes */
+        justify-content: flex-end; /* Align checkboxes to the right */
+        align-items: center; /* Vertically align checkboxes and labels */
+      }
+
+      .checkbox-container label {
+        display: flex; /* Align checkbox and text horizontally */
+        align-items: center; /* Vertically center the checkbox and text */
+        gap: 10px; /* Add space between the checkbox and the text */
+        color: #83d5f6;
+      }
+
+      .checkbox-container h2 {
+        margin: 0; /* Remove default margin from the <h2> */
+        font-size: 24px; /* Adjust font size if needed */
+      }
+
+      .filters-hr {
+        border: none;
+        border-top: 2px solid #83d5f6; /* Horizontal line color */
+        margin-top: 15px; /* Space above the line */
+        margin-bottom: 20px; /* Space below the line */
+      }
+    </style>
   </head>
   <link rel="stylesheet" href="../css/test.css" />
   <link
@@ -69,6 +139,84 @@
       </ul>
     </div>
 
-    <section class="filters"></section>
+    <section class="filters">
+      <div>
+        <select id="category-select" class="category-dropdown">
+          <option value="all" disabled selected>Category</option>
+          <option value="pokemon">Pokemon</option>
+          <option value="digimon">Digimon</option>
+          <option value="invisimals">Invizimals</option>
+          <option value="yugioh">Yugioh</option>
+          <option value="bankai">Bankai</option>
+        </select>
+      </div>
+      <div>
+        <select id="subcategory-select" class="category-dropdown">
+          <option value="all" disabled selected>Subcategory</option>
+        </select>
+      </div>
+      <div class="checkbox-container" id="checkbox-container">
+        <!-- Checkboxes will be dynamically added here -->
+      </div>
+    </section>
+    <hr class="filters-hr" />
+
+    <script>
+      const subcategoryOptions = {
+        pokemon: ["Pikachu", "Charizard", "Bulbasaur"],
+        digimon: ["Agumon", "Gabumon", "Patamon"],
+        invisimals: ["Tiger Shark", "Fire Fox", "Shadow"],
+        yugioh: ["Blue-Eyes White Dragon", "Dark Magician", "Exodia"],
+        bankai: ["Ichigo", "Rukia", "Renji"],
+      };
+
+      const categoryCheckboxes = {
+        pokemon: ["EX", "Shiny", "GX", "V", "VStar", "Holo", "Fossil"],
+        digimon: ["Rookie", "Champion", "Ultimate", "Mega"],
+        invisimals: ["Common", "Rare", "Legendary"],
+        yugioh: ["Fusion", "Synchro", "XYZ", "Pendulum"],
+        bankai: ["Shikai", "Bankai", "Hollow"],
+      };
+
+      document.getElementById("category-select").addEventListener("change", function () {
+        const category = this.value;
+        const subcategorySelect = document.getElementById("subcategory-select");
+        const checkboxContainer = document.getElementById("checkbox-container");
+
+        // Clear existing options in subcategory dropdown
+        subcategorySelect.innerHTML = '<option value="all" disabled selected>Subcategory</option>';
+
+        // Populate new options based on the selected category
+        if (subcategoryOptions[category]) {
+          subcategoryOptions[category].forEach((subcategory) => {
+            const option = document.createElement("option");
+            option.value = subcategory.toLowerCase();
+            option.textContent = subcategory;
+            subcategorySelect.appendChild(option);
+          });
+        }
+
+        // Clear existing checkboxes
+        checkboxContainer.innerHTML = "";
+
+        // Populate new checkboxes based on the selected category
+        if (categoryCheckboxes[category]) {
+          categoryCheckboxes[category].forEach((checkboxLabel) => {
+            const label = document.createElement("label");
+            label.innerHTML = `
+              <input type="checkbox" class="styled-checkbox" />
+              <h2>${checkboxLabel}</h2>
+            `;
+            checkboxContainer.appendChild(label);
+          });
+        }
+      });
+
+      document.querySelector(".more").addEventListener("click", function () {
+        const dropdown = document.getElementById("more-categories");
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      });
+    </script>
   </body>
 </html>
