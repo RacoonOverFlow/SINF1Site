@@ -248,7 +248,7 @@
     </section>
     <script>
       const subcategoryOptions = {
-        pokemon: ["Pikachu", "Charizard", "Bulbasaur", "Mew"],
+        pokemon: ["All", "Pikachu", "Charizard", "Bulbasaur", "Mew"],
         digimon: ["Agumon", "Gabumon", "Patamon"],
         invisimals: ["Tiger Shark", "Fire Fox", "Shadow"],
         yugioh: ["Blue-Eyes White Dragon", "Dark Magician", "Exodia"],
@@ -263,15 +263,39 @@
         bankai: ["Shikai", "Bankai", "Hollow"],
       };
 
-      document.getElementById("category-select").addEventListener("change", function () {
-        const category = this.value;
+      function updateCardsVisibility() {
+        const category = document.getElementById("category-select").value;
+        const subcategory = document.getElementById("subcategory-select").value;
+        const selectedCheckboxes = Array.from(
+          document.querySelectorAll(".styled-checkbox:checked")
+        ).map((checkbox) => checkbox.nextElementSibling.textContent);
+
+        const mewCard = document.querySelector(".collection_box_primary:nth-child(1)");
+        const charizardCard = document.querySelector(".collection_box_primary:nth-child(2)");
+
+        mewCard.style.display =
+          (category === "all" || category === "pokemon") &&
+          (subcategory === "all" || subcategory === "mew") &&
+          selectedCheckboxes.length === 0
+            ? "block"
+            : "none";
+
+        charizardCard.style.display =
+          (category === "all" || category === "pokemon") &&
+          (subcategory === "all" || subcategory === "charizard") &&
+          !selectedCheckboxes.some((checkbox) =>
+            ["EX", "GX", "VStar", "Holo", "Fossil"].includes(checkbox)
+          )
+            ? "block"
+            : "none";
+      }
+
+      function populateSubcategoriesAndCheckboxes() {
+        const category = document.getElementById("category-select").value;
         const subcategorySelect = document.getElementById("subcategory-select");
         const checkboxContainer = document.getElementById("checkbox-container");
 
-        // Clear existing options in subcategory dropdown
         subcategorySelect.innerHTML = '<option value="all" disabled selected>Subcategory</option>';
-
-        // Populate new options based on the selected category
         if (subcategoryOptions[category]) {
           subcategoryOptions[category].forEach((subcategory) => {
             const option = document.createElement("option");
@@ -281,10 +305,7 @@
           });
         }
 
-        // Clear existing checkboxes
         checkboxContainer.innerHTML = "";
-
-        // Populate new checkboxes based on the selected category
         if (categoryCheckboxes[category]) {
           categoryCheckboxes[category].forEach((checkboxLabel) => {
             const label = document.createElement("label");
@@ -295,12 +316,16 @@
             checkboxContainer.appendChild(label);
           });
         }
-      });
 
-      document.querySelector(".more").addEventListener("click", function () {
+        updateCardsVisibility();
+      }
+
+      document.getElementById("category-select").addEventListener("change", populateSubcategoriesAndCheckboxes);
+      document.getElementById("subcategory-select").addEventListener("change", updateCardsVisibility);
+      document.getElementById("checkbox-container").addEventListener("change", updateCardsVisibility);
+      document.querySelector(".more").addEventListener("click", () => {
         const dropdown = document.getElementById("more-categories");
-        dropdown.style.display =
-          dropdown.style.display === "block" ? "none" : "block";
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
       });
     </script>
   </body>
