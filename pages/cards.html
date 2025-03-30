@@ -3,27 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QUAG</title>
-    <link rel="stylesheet" href="css/test.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-    />
+    <title>Cards</title>
   </head>
+  <link rel="stylesheet" href="../css/test.css" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+  />
 
   <body>
     <header>
       <div>
-        <a href="index.html"
-          ><img class="logo" src="Images/Logo.png" alt="logo" href="index.html"
+        <a href="../index.html"
+          ><img class="logo" src="../Images/Logo.png" alt="logo"
         /></a>
       </div>
       <div class="nav-search">
@@ -48,7 +48,7 @@
         <li class="divider">|</li>
         <li><a href="comics.html">Comics</a></li>
         <li class="divider">|</li>
-        <li><a href="pages/cards.html">Cards</a></li>
+        <li><a href="cards.html">Cards</a></li>
         <li class="divider">|</li>
         <li class="limited"><a href="limited.html">LIMITED</a></li>
         <li class="divider">|</li>
@@ -68,28 +68,5 @@
         <li><a href="category4.html">Category 4</a></li>
       </ul>
     </div>
-
-    <main>
-      <section class="spring-sale">
-        <div class="sale-text">
-          <h1>SPRING SALE</h1>
-          <p class="sale-info">60% OFF I UP TO 11TH MAY</p>
-          <button
-            class="shop-now"
-            onclick="window.location.href='your-target-page.html';"
-          >
-            SHOP NOW
-          </button>
-        </div>
-      </section>
-    </main>
-
-    <script>
-      document.querySelector(".more").addEventListener("click", function () {
-        const dropdown = document.getElementById("more-categories");
-        dropdown.style.display =
-          dropdown.style.display === "block" ? "none" : "block";
-      });
-    </script>
   </body>
 </html>
