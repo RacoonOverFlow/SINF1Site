@@ -19,12 +19,13 @@
             }
 
             .box_container_primary .title-inside {
-                text-align: center;
-                font-weight: 900; /* Match the bold style */
-                font-size: 36px; /* Adjust font size */
-                color: #8d7ab1; /* Match the color */
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Match the shadow */
-                margin-bottom: 20px; /* Add spacing below the title */
+                position: absolute;
+                top: 10px; /* Move the text slightly up */
+                left: 45%; /* Position the text to the right of the image */
+                font-weight: 900;
+                font-size: 36px;
+                color: #8d7ab1;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             }
 
             .box_container_primary img {
@@ -32,6 +33,21 @@
                 max-height: 100%;
                 border-radius: 10px;
                 object-fit: cover; /* Ensure the image covers the area */
+            }
+
+            .box_container_primary .details {
+                position: absolute;
+                top: 120px; /* Move the text slightly up */
+                left: 45%; /* Position the text to the right of the image */
+                font-size: 28px; /* Adjust font size */
+                color: #8d7ab1;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                line-height: 1.8; /* Add spacing between lines */
+            }
+
+            .box_container_primary .details p {
+                margin: 0; /* Remove default margins for consistency */
+                font-weight: 600; /* Use a valid font-weight value */
             }
         </style>
     </head>
@@ -116,8 +132,15 @@
         </div>
 
         <section class="box_container_primary">
-            <div class="title-inside">Charizard</div>
+            <div class="title-inside">Charizard V Shiny - Normal Edition</div>
             <img src="../Images/cards/pokemon/charizardVShiny.png" alt="Charizard V Shiny">
+            <div class="details">
+                <p>Rarity: <span style="color: #E2B142; font-weight: inherit; text-shadow: inherit;">Hyper Rare</span></p>
+                <p>Release: <span style="color: #94CFDE; font-weight: inherit; text-shadow: inherit;">November 12, 2021</span></p>
+                <p>Set: <span style="color: #94CFDE; font-weight: inherit; text-shadow: inherit;">Champion's Path</span></p>
+                <p>Card: <span style="color: #94CFDE; font-weight: inherit; text-shadow: inherit;">#SV107/SV122</span></p>
+                <p>Weight: <span style="color: #94CFDE; font-weight: inherit; text-shadow: inherit;">1.6g</span></p>
+            </div>
         </section>
     </body>
 </html>
