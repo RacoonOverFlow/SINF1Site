@@ -14,6 +14,7 @@
         border: none; /* Remove black outline */
         outline: none; /* Remove focus outline */
         font-size: 24px; /* Increase font size */
+        font-weight: bold; /* Make the dashboard text bold */
       }
 
       .category-dropdown option {
@@ -72,6 +73,63 @@
         border-top: 2px solid #83d5f6; /* Horizontal line color */
         margin-top: 15px; /* Space above the line */
         margin-bottom: 20px; /* Space below the line */
+      }
+
+      .collection_container {
+        display: flex; /* Use flexbox for horizontal alignment */
+        flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+        gap: 20px; /* Add space between the boxes */
+        justify-content: flex-start; /* Align boxes to the left */
+        padding-left: 20px; /* Add 20px padding to the left of the container */
+      }
+
+      .collection_box_primary {
+        background-color: #F6F6F4;
+        padding: 20px; /* Increased padding for better spacing */
+        width: 260px; /* Set a fixed width */
+        text-align: center;
+        border-radius: 10px;
+      }
+
+      .collection_image {
+          display: flex; /* Use flexbox for alignment */
+          justify-content: center; /* Center horizontally */
+          align-items: center; /* Center vertically */
+          height: 180px; /* Match the height of the box */
+      }
+
+      .collection_text {
+          text-align: center; /* Center the text horizontally */
+          line-height: 1.5; /* Adjust line height for better spacing */
+          margin-top: 10px; /* Add space between the image and text */
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow to the text */
+      }
+
+      .collection_text h1 {
+          font-weight: 900; /* Explicitly set font weight to make it thicker */
+      }
+
+      .collection_text a {
+          text-decoration: none; /* Remove underline from links */
+          color: #8d7ab1; /* Ensure the link inherits the text color */
+      }
+
+      .icon-container {
+        display: flex; /* Align icons horizontally */
+        justify-content: center; /* Center the icons */
+        gap: 15px; /* Add space between the icons */
+        margin-top: 10px; /* Add space above the icons */
+      }
+
+      .icon-container img {
+        width: 40px; /* Set icon width */
+        height: 40px; /* Set icon height */
+        cursor: pointer; /* Change cursor to pointer for interactivity */
+      }
+
+      .dashboard a {
+        font-weight: bold; /* Make the dashboard text bold */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add shadow to the text */
       }
     </style>
   </head>
@@ -143,6 +201,7 @@
       <div>
         <select id="category-select" class="category-dropdown">
           <option value="all" disabled selected>Category</option>
+          <option value="all">All</option>
           <option value="pokemon">Pokemon</option>
           <option value="digimon">Digimon</option>
           <option value="invisimals">Invizimals</option>
@@ -161,13 +220,49 @@
     </section>
     <hr class="filters-hr" />
 
+    <section class="collection_container">
+      <div class="collection_box_primary">
+        <div class="collection_image">
+          <img src="../Images/cards/pokemon/Mew-cbr11.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
+        </div>
+        <div class="collection_text">
+          <a href="#mew.html"><h1>Mew</h1>
+          <h1>Normal Edition</h1></a>
+        </div>
+        <div class="icon-container">
+          <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon"></a>
+          <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon"></a>
+          <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon"></a>
+          <a href="#more"><img src="../Images/icons/more.png" alt="More Icon"></a>
+        </div>
+      </div>
+
+      <div class="collection_box_primary">
+        <div class="collection_image">
+          <img src="../Images/cards/pokemon/charizardVShiny.png" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
+        </div>
+        <div class="collection_text">
+          <a href="#charizardvshiny.html"><h1>Charizard V Shiny</h1>
+          <h1>Normal Edition</h1></a>
+        </div>
+        <div class="icon-container">
+          <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon"></a>
+          <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon"></a>
+          <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon"></a>
+          <a href="#more"><img src="../Images/icons/more.png" alt="More Icon"></a>
+        </div>
+      </div>
+    </section>
     <script>
       const subcategoryOptions = {
-        pokemon: ["Pikachu", "Charizard", "Bulbasaur"],
+        pokemon: ["All", "Pikachu", "Charizard", "Bulbasaur", "Mew"],
         digimon: ["Agumon", "Gabumon", "Patamon"],
         invisimals: ["Tiger Shark", "Fire Fox", "Shadow"],
         yugioh: ["Blue-Eyes White Dragon", "Dark Magician", "Exodia"],
         bankai: ["Ichigo", "Rukia", "Renji"],
+        all: ["All", "Pikachu", "Charizard", "Bulbasaur", "Mew", "Agumon", "Gabumon", "Patamon", 
+        "Tiger Shark", "Fire Fox", "Shadow", "Blue-Eyes White Dragon", "Dark Magician", "Exodia",
+        "Ichigo", "Rukia", "Renji"]
       };
 
       const categoryCheckboxes = {
@@ -178,15 +273,39 @@
         bankai: ["Shikai", "Bankai", "Hollow"],
       };
 
-      document.getElementById("category-select").addEventListener("change", function () {
-        const category = this.value;
+      function updateCardsVisibility() {
+        const category = document.getElementById("category-select").value;
+        const subcategory = document.getElementById("subcategory-select").value;
+        const selectedCheckboxes = Array.from(
+          document.querySelectorAll(".styled-checkbox:checked")
+        ).map((checkbox) => checkbox.nextElementSibling.textContent);
+
+        const mewCard = document.querySelector(".collection_box_primary:nth-child(1)");
+        const charizardCard = document.querySelector(".collection_box_primary:nth-child(2)");
+
+        mewCard.style.display =
+          (category === "all" || category === "pokemon") &&
+          (subcategory === "all" || subcategory === "mew") &&
+          selectedCheckboxes.length === 0
+            ? "block"
+            : "none";
+
+        charizardCard.style.display =
+          (category === "all" || category === "pokemon") &&
+          (subcategory === "all" || subcategory === "charizard") &&
+          !selectedCheckboxes.some((checkbox) =>
+            ["EX", "GX", "VStar", "Holo", "Fossil"].includes(checkbox)
+          )
+            ? "block"
+            : "none";
+      }
+
+      function populateSubcategoriesAndCheckboxes() {
+        const category = document.getElementById("category-select").value;
         const subcategorySelect = document.getElementById("subcategory-select");
         const checkboxContainer = document.getElementById("checkbox-container");
 
-        // Clear existing options in subcategory dropdown
         subcategorySelect.innerHTML = '<option value="all" disabled selected>Subcategory</option>';
-
-        // Populate new options based on the selected category
         if (subcategoryOptions[category]) {
           subcategoryOptions[category].forEach((subcategory) => {
             const option = document.createElement("option");
@@ -196,10 +315,7 @@
           });
         }
 
-        // Clear existing checkboxes
         checkboxContainer.innerHTML = "";
-
-        // Populate new checkboxes based on the selected category
         if (categoryCheckboxes[category]) {
           categoryCheckboxes[category].forEach((checkboxLabel) => {
             const label = document.createElement("label");
@@ -210,12 +326,16 @@
             checkboxContainer.appendChild(label);
           });
         }
-      });
 
-      document.querySelector(".more").addEventListener("click", function () {
+        updateCardsVisibility();
+      }
+
+      document.getElementById("category-select").addEventListener("change", populateSubcategoriesAndCheckboxes);
+      document.getElementById("subcategory-select").addEventListener("change", updateCardsVisibility);
+      document.getElementById("checkbox-container").addEventListener("change", updateCardsVisibility);
+      document.querySelector(".more").addEventListener("click", () => {
         const dropdown = document.getElementById("more-categories");
-        dropdown.style.display =
-          dropdown.style.display === "block" ? "none" : "block";
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
       });
     </script>
   </body>
