@@ -24,7 +24,7 @@
     <header>
       <div>
         <a href="../index.html"
-          ><img class="logo" src="../Images/Logo.png" alt="logo"
+          ><img class="logo" src="../Images/Logo.png" alt="logo" href="index.php"
         /></a>
       </div>
       <div class="nav-search">
