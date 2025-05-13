@@ -176,7 +176,7 @@
           <li class="divider">|</li>
           <li><a class="comics" href="pages/comics.php">Comics</a></li>
           <li class="divider">|</li>
-          <li><a class="cards" href="pages/cards.php">Cards</a></li>
+          <li><a class="stamps" href="pages/stamps.php">stamps</a></li>
           <li class="divider">|</li>
           <li><a class="events" href="pages/events.php">Events</a></li>
           <li class="divider">|</li>
@@ -272,14 +272,15 @@
           };
     
           const categoryCheckboxes = {
-            Animals: [ "Shiny", "GX", "V", "VStar", "Holo", "Fossil"],
-            Cities: ["Rookie", "Champion", "Ultimate", "Mega"],
-            Travel: ["Common", "Rare", "Legendary"],
-            Famous_spots: ["Fusion", "Synchro", "XYZ", "Pendulum"],
-            All: ["Shikai", "Bankai", "Hollow"],
+            Animals: ["All","Pandas", "Shrimps", "Mew"],
+            Cities: ["London", "Portugal", "New York"],
+            Travel: ["Airport", "Planes", "Trains", "Cars"],
+            Famous_spots: ["Eiffel Tower", "Statue of Liberty", "Big Ben"],
+            all: ["Pandas","Shrimps","Mew","London","Portugal","New York","Airport","Planes","Trains",
+              "Cars","Eiffel Tower","Statue of Liberty","Big Ben",],
           };
     
-          function updateCardsVisibility() {
+          function updatestampsVisibility() {
             const category = document.getElementById("category-select").value;
             const subcategory = document.getElementById("subcategory-select").value;
             const selectedCheckboxes = Array.from(
@@ -288,32 +289,32 @@
     
             const showFavoritesOnly = document.getElementById("favorite-filter").checked;
     
-            const cards = document.querySelectorAll(".collection_box_primary");
+            const stamps = document.querySelectorAll(".collection_box_primary");
+  
+            stamp.forEach((stamp) => {
+            const stampName = stamp.querySelector(".collection_text h1").textContent.toLowerCase();
+              const isFavorite = stamp.querySelector("img[alt='Favorite Icon']").src.includes("favorite2.png");
     
-            cards.forEach((card) => {
-            const cardName = card.querySelector(".collection_text h1").textContent.toLowerCase();
-              const isFavorite = card.querySelector("img[alt='Favorite Icon']").src.includes("favorite2.png");
-    
-            const cardCategory = cardName.includes("mew") || cardName.includes("charizard") ? "pokemon" : "";
-              const cardSubcategory = cardName.includes("mew")
+            const stampCategory = stampName.includes("mew") || stampName.includes("charizard") ? "pokemon" : "";
+              const stampSubcategory = stampName.includes("mew")
                 ? "mew"
-                : cardName.includes("charizard")
+                : stampName.includes("charizard")
                 ? "charizard"
                 : "";
     
-              const excludedCheckboxes = cardName.includes("mew")
+              const excludedCheckboxes = stampName.includes("mew")
                 ? ["Shiny", "V", "EX", "GX", "VStar", "Holo", "Fossil"]
-                : cardName.includes("charizard")
+                : stampName.includes("charizard")
                 ? ["EX", "GX", "VStar", "Holo", "Fossil"]
                 : [];
     
             const shouldShow =
               (!showFavoritesOnly || isFavorite) &&
-              (category === "all" || category === cardCategory) &&
-              (subcategory === "all" || subcategory === cardSubcategory) &&
+              (category === "all" || category === stampCategory) &&
+              (subcategory === "all" || subcategory === stampSubcategory) &&
               !selectedCheckboxes.some((checkbox) => excludedCheckboxes.includes(checkbox));
     
-              card.style.display = shouldShow ? "block" : "none";
+              stamp.style.display = shouldShow ? "block" : "none";
             });
           }
     
@@ -350,18 +351,19 @@
               });
             }
     
-            updateCardsVisibility();
+            updatestampsVisibility();
           }
     
           document.getElementById("category-select").addEventListener("change", populateSubcategoriesAndCheckboxes);
-          document.getElementById("subcategory-select").addEventListener("change", updateCardsVisibility);
-          document.getElementById("checkbox-container").addEventListener("change", updateCardsVisibility);
+          document.getElementById("subcategory-select").addEventListener("change", updatestampsVisibility);
+          document.getElementById("checkbox-container").addEventListener("change", updatestampsVisibility);
           document.querySelector(".more").addEventListener("click", () => {
             const dropdown = document.getElementById("more-categories");
             dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
           });
     
-          // Add event listeners to toggle favorite button texture and
+          // Add event listeners to toggle favorite button texture 
+        
           document.querySelectorAll(".icon-container img[alt='Favorite Icon']").forEach((favoriteIcon) => {
             favoriteIcon.addEventListener("click", () => {
               const currentSrc = favoriteIcon.src;
@@ -369,7 +371,7 @@
                 ? "../Images/icons/favorite.png"
                 : "../Images/icons/favorite2.png";
     
-              updateCardsVisibility();
+              updatestampsVisibility();
             });
           });
         </script>
