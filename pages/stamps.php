@@ -263,13 +263,12 @@
 
         <script>
           const subcategoryOptions = {
-            Animals: ["All", "Pikachu", "Charizard", "Bulbasaur", "Mew"],
-            Cities: ["Agumon", "Gabumon", "Patamon"],
-            Travel: ["Tiger Shark", "Fire Fox", "Shadow"],
-            Famous_spots: ["Blue-Eyes White Dragon", "Dark Magician", "Exodia"],
-            all: ["All", "Pikachu", "Charizard", "Bulbasaur", "Mew", "Agumon", "Gabumon", "Patamon",
-            "Tiger Shark", "Fire Fox", "Shadow", "Blue-Eyes White Dragon", "Dark Magician", "Exodia",
-            "Ichigo", "Rukia", "Renji"]
+            Animals: ["All", "Pandas", "Shrimps", "Mew"],
+            Cities: ["London", "Portugal", "New York"],
+            Travel: ["Airport", "Planes", "Trains", "Cars"],
+            Famous_spots: ["Eiffel Tower", "Statue of Liberty", "Big Ben"],
+            all: ["Pandas","Shrimps","Mew","London","Portugal","New York","Airport","Planes","Trains",
+              "Cars","Eiffel Tower","Statue of Liberty","Big Ben",],
           };
     
           const categoryCheckboxes = {
