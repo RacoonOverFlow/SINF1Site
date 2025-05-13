@@ -1,0 +1,44 @@
+.box_container_primary {
+  color: #f6f6f4;
+  background-color: #f6f6f4;
+  padding: 20px;
+  width: 1306px;
+  height: 720px;
+  margin: 20px auto 20px 150px; /* Shift box slightly to the right of the left side */
+  border-radius: 10px;
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center content vertically */
+  position: relative; /* Enable positioning for child elements */
+}
+
+.box_container_primary .title-inside {
+  position: absolute;
+  top: 10px; /* Move the text slightly up */
+  left: 45%; /* Position the text to the right of the image */
+  font-weight: 900;
+  font-size: 36px;
+  color: #8d7ab1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.box_container_primary img {
+  max-width: 50%; /* Fill the left side */
+  max-height: 100%;
+  border-radius: 10px;
+  object-fit: cover; /* Ensure the image covers the area */
+}
+
+.box_container_primary .details {
+  position: absolute;
+  top: 120px; /* Move the text slightly up */
+  left: 45%; /* Position the text to the right of the image */
+  font-size: 28px; /* Adjust font size */
+  color: #8d7ab1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  line-height: 1.8; /* Add spacing between lines */
+}
+
+.box_container_primary .details p {
+  margin: 0; /* Remove default margins for consistency */
+  font-weight: 600; /* Use a valid font-weight value */
+}
