@@ -272,11 +272,11 @@
           };
     
           const categoryCheckboxes = {
-            pokemon: ["EX", "Shiny", "GX", "V", "VStar", "Holo", "Fossil"],
-            digimon: ["Rookie", "Champion", "Ultimate", "Mega"],
-            invisimals: ["Common", "Rare", "Legendary"],
-            yugioh: ["Fusion", "Synchro", "XYZ", "Pendulum"],
-            bankai: ["Shikai", "Bankai", "Hollow"],
+            Animals: [ "Shiny", "GX", "V", "VStar", "Holo", "Fossil"],
+            Cities: ["Rookie", "Champion", "Ultimate", "Mega"],
+            Travel: ["Common", "Rare", "Legendary"],
+            Famous_spots: ["Fusion", "Synchro", "XYZ", "Pendulum"],
+            All: ["Shikai", "Bankai", "Hollow"],
           };
     
           function updateCardsVisibility() {
