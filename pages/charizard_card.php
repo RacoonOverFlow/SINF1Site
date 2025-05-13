@@ -23,8 +23,8 @@
   <body>
     <header>
       <div>
-        <a href="../index.html"
-          ><img class="logo" src="../Images/Logo.png" alt="logo" href="index.php"
+        <a href="../index.php"
+          ><img class="logo" src="../Images/Logo.png" alt="logo" 
         /></a>
       </div>
       <div class="nav-search">
