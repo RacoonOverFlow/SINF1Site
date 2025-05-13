@@ -362,7 +362,8 @@
             dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
           });
     
-          // Add event listeners to toggle favorite button texture and
+          // Add event listeners to toggle favorite button texture 
+        
           document.querySelectorAll(".icon-container img[alt='Favorite Icon']").forEach((favoriteIcon) => {
             favoriteIcon.addEventListener("click", () => {
               const currentSrc = favoriteIcon.src;
