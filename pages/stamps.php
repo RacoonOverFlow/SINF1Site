@@ -272,11 +272,12 @@
           };
     
           const categoryCheckboxes = {
-            Animals: [ "Shiny", "GX", "V", "VStar", "Holo", "Fossil"],
-            Cities: ["Rookie", "Champion", "Ultimate", "Mega"],
-            Travel: ["Common", "Rare", "Legendary"],
-            Famous_spots: ["Fusion", "Synchro", "XYZ", "Pendulum"],
-            All: ["Shikai", "Bankai", "Hollow"],
+            Animals: ["All","Pandas", "Shrimps", "Mew"],
+            Cities: ["London", "Portugal", "New York"],
+            Travel: ["Airport", "Planes", "Trains", "Cars"],
+            Famous_spots: ["Eiffel Tower", "Statue of Liberty", "Big Ben"],
+            all: ["Pandas","Shrimps","Mew","London","Portugal","New York","Airport","Planes","Trains",
+              "Cars","Eiffel Tower","Statue of Liberty","Big Ben",],
           };
     
           function updateCardsVisibility() {
