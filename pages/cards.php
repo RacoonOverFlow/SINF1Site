@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE php>
+<php lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,21 +41,21 @@
     <nav class="dashboard">
       <ul>
         <li>
-          <a class="miniatures" href="../pages/miniatures.html">Miniatures</a>
+          <a class="miniatures" href="../pages/miniatures.php">Miniatures</a>
         </li>
         <li class="divider">|</li>
-        <li><a class="stamps" href="pages/stamps.html">Stamps</a></li>
+        <li><a class="stamps" href="pages/stamps.php">Stamps</a></li>
         <li class="divider">|</li>
-        <li><a class="coins" href="pages/coins.html">Coins</a></li>
+        <li><a class="coins" href="pages/coins.php">Coins</a></li>
         <li class="divider">|</li>
-        <li><a class="comics" href="pages/comics.html">Comics</a></li>
+        <li><a class="comics" href="pages/comics.php">Comics</a></li>
         <li class="divider">|</li>
-        <li><a class="cards" href="pages/cards.html">Cards</a></li>
+        <li><a class="cards" href="pages/cards.php">Cards</a></li>
         <li class="divider">|</li>
-        <li><a class="events" href="../pages/events.html">Events</a></li>
+        <li><a class="events" href="../pages/events.php">Events</a></li>
         <li class="divider">|</li>
         <li>
-          <a class="collections" href="../pages/MyCollections.html"
+          <a class="collections" href="../pages/MyCollections.php"
             >My Collections</a
           >
         </li>
@@ -69,19 +69,19 @@
 
     <div class="more-categories" id="more-categories">
       <ul>
-        <li><a href="category1.html">Category 1</a></li>
-        <li><a href="category2.html">Category 2</a></li>
-        <li><a href="category3.html">Category 3</a></li>
-        <li><a href="category4.html">Category 4</a></li>
+        <li><a href="category1.php">Category 1</a></li>
+        <li><a href="category2.php">Category 2</a></li>
+        <li><a href="category3.php">Category 3</a></li>
+        <li><a href="category4.php">Category 4</a></li>
       </ul>
     </div>
 
     <div class="more-categories" id="more-categories">
       <ul>
-        <li><a href="category1.html">Category 1</a></li>
-        <li><a href="category2.html">Category 2</a></li>
-        <li><a href="category3.html">Category 3</a></li>
-        <li><a href="category4.html">Category 4</a></li>
+        <li><a href="category1.php">Category 1</a></li>
+        <li><a href="category2.php">Category 2</a></li>
+        <li><a href="category3.php">Category 3</a></li>
+        <li><a href="category4.php">Category 4</a></li>
       </ul>
     </div>
 
@@ -118,7 +118,7 @@
           />
         </div>
         <div class="collection_text">
-          <a href="#mew.html"
+          <a href="#mew.php"
             ><h1>Mew</h1>
             <h1>Normal Edition</h1></a
           >
@@ -148,7 +148,7 @@
           />
         </div>
         <div class="collection_text">
-          <a href="../pages/charizard_card.html"
+          <a href="../pages/charizard_card.php"
             ><h1>Charizard V Shiny</h1>
             <h1>Normal Edition</h1></a
           >
@@ -170,6 +170,6 @@
       </div>
     </section>
   </body>
-</html>
+</php>
 <script src="../js/mainPage.js"></script>
 <script src="../js/cards.js"></script>

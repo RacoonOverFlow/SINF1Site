@@ -85,7 +85,7 @@ function populateSubcategoriesAndCheckboxes() {
   const subcategorySelect = document.getElementById("subcategory-select");
   const checkboxContainer = document.getElementById("checkbox-container");
 
-  subcategorySelect.innerHTML =
+  subcategorySelect.innerphp =
     '<option value="all" disabled selected>Subcategory</option>';
   if (subcategoryOptions[category]) {
     subcategoryOptions[category].forEach((subcategory) => {
@@ -96,7 +96,7 @@ function populateSubcategoriesAndCheckboxes() {
     });
   }
 
-  checkboxContainer.innerHTML = `
+  checkboxContainer.innerphp = `
       <label>
         <input type="checkbox" id="favorite-filter" class="styled-checkbox" />
         <h2>Favorites</h2>
@@ -106,7 +106,7 @@ function populateSubcategoriesAndCheckboxes() {
   if (categoryCheckboxes[category]) {
     categoryCheckboxes[category].forEach((checkboxLabel) => {
       const label = document.createElement("label");
-      label.innerHTML = `
+      label.innerphp = `
           <input type="checkbox" class="styled-checkbox" />
           <h2>${checkboxLabel}</h2>
         `;
