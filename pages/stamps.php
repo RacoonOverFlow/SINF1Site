@@ -263,11 +263,10 @@
 
         <script>
           const subcategoryOptions = {
-            pokemon: ["All", "Pikachu", "Charizard", "Bulbasaur", "Mew"],
-            digimon: ["Agumon", "Gabumon", "Patamon"],
-            invisimals: ["Tiger Shark", "Fire Fox", "Shadow"],
-            yugioh: ["Blue-Eyes White Dragon", "Dark Magician", "Exodia"],
-            bankai: ["Ichigo", "Rukia", "Renji"],
+            Animals: ["All", "Pikachu", "Charizard", "Bulbasaur", "Mew"],
+            Cities: ["Agumon", "Gabumon", "Patamon"],
+            Travel: ["Tiger Shark", "Fire Fox", "Shadow"],
+            Famous_spots: ["Blue-Eyes White Dragon", "Dark Magician", "Exodia"],
             all: ["All", "Pikachu", "Charizard", "Bulbasaur", "Mew", "Agumon", "Gabumon", "Patamon",
             "Tiger Shark", "Fire Fox", "Shadow", "Blue-Eyes White Dragon", "Dark Magician", "Exodia",
             "Ichigo", "Rukia", "Renji"]
