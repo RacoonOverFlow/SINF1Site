@@ -148,7 +148,7 @@
     <body>
       <header>
         <div>
-          <a href="../index.html"
+          <a href="../index.php"
             ><img class="logo" src="../Images/Logo.png" alt="logo"
           /></a>
         </div>
@@ -231,7 +231,7 @@
           <img src="C:\Users\viole\Pictures\games\stamps_Travel.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
         </div>
         <div class="collection_text">
-          <a href="#stamp.html"><h1>Green Travel</h1>
+          <a href="#stamp.php"><h1>Green Travel</h1>
           <h1>Travel Edition</h1></a>
         </div>
         <div class="icon-container">
@@ -249,7 +249,7 @@
             <img src="C:\Users\viole\Pictures\games\stamps_express_delivered.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
           </div>
           <div class="collection_text">
-            <a href="#stamp.html"><h1>Green Travel</h1>
+            <a href="#stamp.php"><h1>Green Travel</h1>
             <h1>Travel Edition</h1></a>
           </div>
           <div class="icon-container">
