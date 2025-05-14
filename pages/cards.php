@@ -44,13 +44,13 @@
           <a class="miniatures" href="../pages/miniatures.php">Miniatures</a>
         </li>
         <li class="divider">|</li>
-        <li><a class="stamps" href="pages/stamps.php">Stamps</a></li>
+        <li><a class="stamps" href="../pages/stamps.php">Stamps</a></li>
         <li class="divider">|</li>
-        <li><a class="coins" href="pages/coins.php">Coins</a></li>
+        <li><a class="coins" href="../pages/coins.php">Coins</a></li>
         <li class="divider">|</li>
-        <li><a class="comics" href="pages/comics.php">Comics</a></li>
+        <li><a class="comics" href="../pages/comics.php">Comics</a></li>
         <li class="divider">|</li>
-        <li><a class="cards" href="pages/cards.php">Cards</a></li>
+        <li><a class="cards" href="../pages/cards.php">Cards</a></li>
         <li class="divider">|</li>
         <li><a class="events" href="../pages/events.php">Events</a></li>
         <li class="divider">|</li>
