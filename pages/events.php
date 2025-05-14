@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE php>
+<php lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,21 +42,21 @@
     <nav class="dashboard">
       <ul>
         <li>
-          <a class="miniatures" href="../pages/miniatures.html">Miniatures</a>
+          <a class="miniatures" href="../pages/miniatures.php">Miniatures</a>
         </li>
         <li class="divider">|</li>
-        <li><a class="stamps" href="pages/stamps.html">Stamps</a></li>
+        <li><a class="stamps" href="../pages/stamps.php">Stamps</a></li>
         <li class="divider">|</li>
-        <li><a class="coins" href="pages/coins.html">Coins</a></li>
+        <li><a class="coins" href="../pages/coins.php">Coins</a></li>
         <li class="divider">|</li>
-        <li><a class="comics" href="pages/comics.html">Comics</a></li>
+        <li><a class="comics" href="../pages/comics.php">Comics</a></li>
         <li class="divider">|</li>
-        <li><a class="cards" href="../pages/cards.html">Cards</a></li>
+        <li><a class="cards" href="../pages/cards.php">Cards</a></li>
         <li class="divider">|</li>
-        <li><a class="events" href="../pages/events.html">Events</a></li>
+        <li><a class="events" href="../pages/events.php">Events</a></li>
         <li class="divider">|</li>
         <li>
-          <a class="collections" href="../pages/MyCollections.html"
+          <a class="collections" href="../pages/MyCollections.php"
             >My Collections</a
           >
         </li>
@@ -114,7 +114,7 @@
           />
         </div>
         <div class="collection_text">
-          <a href="#pptourn.html"><h1>Pokemon 8 PP Tournament</h1></a>
+          <a href="#pptourn.php"><h1>Pokemon 8 PP Tournament</h1></a>
         </div>
         <div class="icon-container">
           <a href="#favorite"
@@ -142,7 +142,7 @@
           />
         </div>
         <div class="collection_text">
-          <a href="#pokemon_1v1_porto.html"><h1>Pokemon 1v1 Porto</h1></a>
+          <a href="#pokemon_1v1_porto.php"><h1>Pokemon 1v1 Porto</h1></a>
         </div>
         <div class="icon-container">
           <a href="#favorite"
@@ -161,5 +161,5 @@
       </div>
     </section>
   </body>
-</html>
+</php>
 <script src="../js/mainPage.js"></script>
