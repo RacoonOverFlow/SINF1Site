@@ -17,138 +17,12 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
     />
-    <style>
-      .category-dropdown {
-        width: 200px;
-        height: 40px;
-        background-color: #83d5f6;
-        color: white;
-        border: none;
-        outline: none;
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .category-dropdown option {
-        background-color: #aad5e6;
-        color: white;
-        font-size: 18px;
-      }
-
-      .category-dropdown option:checked {
-        background-color: #83d5f6;
-      }
-
-      .filters {
-        display: flex;
-        gap: 20px;
-        margin-top: 20px;
-        margin-left: 20px;
-      }
-
-      .styled-checkbox {
-        width: 40px;
-        height: 40px;
-        appearance: none;
-        border: 2px solid #83d5f6;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      .styled-checkbox:checked {
-        background-color: #83d5f6;
-        border-color: #83d5f6;
-      }
-
-      .checkbox-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 38px;
-        justify-content: flex-end;
-        align-items: center;
-      }
-
-      .checkbox-container label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: #83d5f6;
-      }
-
-      .checkbox-container h2 {
-        margin: 0;
-        font-size: 24px;
-      }
-
-      .filters-hr {
-        border: none;
-        border-top: 2px solid #83d5f6;
-        margin-top: 15px;
-        margin-bottom: 20px;
-      }
-
-      .collection_container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: flex-start;
-        padding-left: 20px;
-      }
-
-      .collection_box_primary {
-        background-color: #F6F6F4;
-        padding: 20px;
-        width: 260px;
-        text-align: center;
-        border-radius: 10px;
-      }
-
-      .collection_image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 180px;
-      }
-
-      .collection_text {
-        text-align: center;
-        line-height: 1.5;
-        margin-top: 10px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      }
-
-      .collection_text h1 {
-        font-weight: 900;
-      }
-
-      .collection_text a {
-        text-decoration: none;
-        color: #8d7ab1;
-      }
-
-      .icon-container {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 10px;
-      }
-
-      .icon-container img {
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-      }
-
-      .dashboard a {
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-      }
-    </style>
+    <link rel="stylesheet" href="../css/stamps.css" />
 </head>  
     <body>
       <header>
         <div>
-          <a href="../index.html"
+          <a href="../index.php"
             ><img class="logo" src="../Images/Logo.png" alt="logo"
           /></a>
         </div>
@@ -164,34 +38,34 @@
         </div>
       </header>
   
-      <nav class="dashboard">
-        <ul>
-          <li>
-            <a class="miniatures" href="pages/miniatures.php">Miniatures</a>
-          </li>
-          <li class="divider">|</li>
-          <li><a class="stamps" href="pages/stamps.php">Stamps</a></li>
-          <li class="divider">|</li>
-          <li><a class="coins" href="pages/coins.php">Coins</a></li>
-          <li class="divider">|</li>
-          <li><a class="comics" href="pages/comics.php">Comics</a></li>
-          <li class="divider">|</li>
-          <li><a class="stamps" href="pages/stamps.php">stamps</a></li>
-          <li class="divider">|</li>
-          <li><a class="events" href="pages/events.php">Events</a></li>
-          <li class="divider">|</li>
-          <li>
-            <a class="collections" href="pages/collections.php"
-              >My Collections</a
-            >
-          </li>
-          <li class="divider">|</li>
-          <li class="more">
-            <span class="menu hamburger material-symbols-outlined">menu</span>
-            More
-          </li>
-        </ul>
-      </nav>
+    <nav class="dashboard">
+      <ul>
+        <li>
+          <a class="miniatures" href="../pages/miniatures.php">Miniatures</a>
+        </li>
+        <li class="divider">|</li>
+        <li><a class="stamps" href="../pages/stamps.php">Stamps</a></li>
+        <li class="divider">|</li>
+        <li><a class="coins" href="../pages/coins.php">Coins</a></li>
+        <li class="divider">|</li>
+        <li><a class="comics" href="../pages/comics.php">Comics</a></li>
+        <li class="divider">|</li>
+        <li><a class="cards" href="../pages/cards.php">Cards</a></li>
+        <li class="divider">|</li>
+        <li><a class="events" href="../pages/events.php">Events</a></li>
+        <li class="divider">|</li>
+        <li>
+          <a class="collections" href="../pages/MyCollections.php"
+            >My Collections</a
+          >
+        </li>
+        <li class="divider">|</li>
+        <li class="more">
+          <span class="menu hamburger material-symbols-outlined">menu</span>
+          More
+        </li>
+      </ul>
+    </nav>
   
       <div class="more-categories" id="more-categories">
         <ul>
@@ -231,7 +105,7 @@
           <img src="C:\Users\viole\Pictures\games\stamps_Travel.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
         </div>
         <div class="collection_text">
-          <a href="#stamp.html"><h1>Green Travel</h1>
+          <a href="#stamp.php"><h1>Green Travel</h1>
           <h1>Travel Edition</h1></a>
         </div>
         <div class="icon-container">
@@ -249,7 +123,7 @@
             <img src="C:\Users\viole\Pictures\games\stamps_express_delivered.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
           </div>
           <div class="collection_text">
-            <a href="#stamp.html"><h1>Green Travel</h1>
+            <a href="#stamp.php"><h1>Green Travel</h1>
             <h1>Travel Edition</h1></a>
           </div>
           <div class="icon-container">
