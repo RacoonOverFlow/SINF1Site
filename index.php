@@ -43,6 +43,7 @@
         <li>
           <a class="miniatures" href="pages/miniatures.php">Miniatures</a>
         </li>
+        
         <li class="divider">|</li>
         <li><a class="stamps" href="pages/stamps.php">Stamps</a></li>
         <li class="divider">|</li>
