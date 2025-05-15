@@ -67,15 +67,15 @@ header {
   font-size: 3rem;
 }
 
-/* Center the box on the screen */
+
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 100px); /* adjust for nav height if needed */
+  height: calc(100vh - 100px); 
 }
 
-/* Style the box */
+
 .login-box {
   width: 360px;
   padding: 30px 40px;
@@ -84,7 +84,7 @@ header {
   border-radius: 12px;
 }
 
-/* Optional tweaks */
+
 .loginTitle {
   margin-bottom: 1rem;
   font-weight: 600;
