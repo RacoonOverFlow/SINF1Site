@@ -2,13 +2,8 @@
   --main-color: #83d5f6;
   --highlight-color: #8d7ab1;
   --text-light: #ffffff;
-}
-
-* {
   font-family: "Poppins", sans-serif;
-  font-weight: 300;
 }
-
 php {
   scroll-behavior: smooth;
   background-color: white;
