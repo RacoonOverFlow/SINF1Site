@@ -2,16 +2,8 @@
   --main-color: #83d5f6;
   --highlight-color: #8d7ab1;
   --text-light: #ffffff;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  font-weight: 300;
 }
-
 php {
   scroll-behavior: smooth;
   background-color: white;
@@ -71,126 +63,31 @@ header {
   border-radius: 0 4px 4px 0;
 }
 
-.dashboard {
-  background: var(--main-color);
-  padding: 15px 0;
-  text-align: center;
-  width: 100%;
-  font-weight: bold;
-}
-
-.dashboard ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  width: 100%;
-  padding: 0 20px;
-}
-
-.dashboard ul li {
-  padding: 0 10px;
-  font-size: 2rem;
-  color: var(--text-light);
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.dashboard ul li a {
-  text-decoration: none;
-  color: white;
-}
-
-.dashboard ul li.limited a,
-.dashboard ul li.on-sale a {
-  color: #8d7ab1;
-}
-
-.dashboard ul .more {
-  display: flex;
-  align-items: center;
-}
-
 .hamburger.material-symbols-outlined {
   font-size: 3rem;
 }
 
-.dashboard ul .divider {
-  color: white;
-  padding: 0 10px;
-}
-.more-categories {
-  display: none;
-  position: absolute;
-  background-color: white;
-  width: 200px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  right: 0;
-  top: 170px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+/* Center the box on the screen */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px); /* adjust for nav height if needed */
 }
 
-.more-categories ul {
-  padding: 0;
-  list-style: none;
+/* Style the box */
+.login-box {
+  width: 360px;
+  padding: 30px 40px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
 }
 
-.more-categories ul li {
-  padding: 10px;
+/* Optional tweaks */
+.loginTitle {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-align: center;
 }
 
-.more-categories ul li a {
-  text-decoration: none;
-  color: #000;
-  display: block;
-}
-
-.more-categories ul li a:hover {
-  background-color: #f1f1f1;
-}
-
-.cards {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
-
-.coins {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
-
-.comics {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
-
-.miniatures {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
-
-.stamps {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
-
-.events {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
-
-.collections {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
-
-.menu {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
-
-.more {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
