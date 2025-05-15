@@ -72,25 +72,27 @@ header {
   font-size: 3rem;
 }
 
+/* Center the box on the screen */
 .wrapper {
-  margin-top: 100px;
-  display: flex;
-  justify-content: center; /* centers the login-box horizontally */
-}
-
-.login-box {
-  width: 300px;
-  background-color: #f8f8f8; /* optional for testing */
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.loginTitle {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
-  color: var(--main-color);
-  margin-bottom: 20px;
+  height: calc(100vh - 100px); /* adjust for nav height if needed */
 }
+
+/* Style the box */
+.login-box {
+  width: 360px;
+  padding: 30px 40px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* Optional tweaks */
+.loginTitle {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
