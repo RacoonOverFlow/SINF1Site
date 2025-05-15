@@ -74,10 +74,15 @@ header {
 
 .wrapper {
   margin-top: 100px;
-  width: 200px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center; /* centers the login-box horizontally */
+}
+
+.login-box {
+  width: 300px;
+  background-color: #f8f8f8; /* optional for testing */
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .loginTitle {
