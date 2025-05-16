@@ -43,7 +43,7 @@
 
       <div class="users" >
         <div class="user-icon">
-          <span class="material-symbols-outlined">person</span>
+          <a href="userPages/login.php"><span class="material-symbols-outlined">person</span></a>
         </div>
         <div class="user-name">
           <p>Username</p>
