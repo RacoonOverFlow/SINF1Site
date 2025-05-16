@@ -112,7 +112,7 @@
       <div class="collection_box_primary">
         <div class="collection_image">
           <img
-            src="../Images/cards/pokemon/Mew-cbr11.jpg"
+            src=""
             alt="Could not find image"
             style="max-width: 100%; max-height: 100%"
           />
@@ -150,8 +150,7 @@
         <div class="collection_text">
           <a href="../pages/charizard_card.php"
             ><h1>Charizard V Shiny</h1>
-            <h1>Normal Edition</h1></a
-          >
+            <h1>Normal Edition</h1></a>
         </div>
         <div class="icon-container">
           <a href="#favorite"
