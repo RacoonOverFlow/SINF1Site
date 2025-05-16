@@ -17,10 +17,14 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
     />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
     <header>
+    <div class="header-container">
       <div>
         <a href="index.php"
           ><img class="logo" src="Images/Logo.png" alt="logo" 
@@ -36,6 +40,21 @@
           <span class="material-symbols-outlined">search</span>
         </div>
       </div>
+
+      <div class="users" >
+        <div class="user-icon">
+          <span class="material-symbols-outlined">person</span>
+        </div>
+        <div class="user-name">
+          <p>Username</p>
+        </div>
+        <div class="logout">
+        <button type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+        </div>
+      </div>
+  </div>
     </header>
 
     <nav class="dashboard">
