@@ -1,6 +1,6 @@
 <?php
 // Include dal file
-require_once "dal/DAL.php";
+require_once "../DALs/loginDAL.php";
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
@@ -55,40 +55,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Sign Up</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <style>
-            body{
-                font: 14px sans-serif;
-            }
-            .wrapper{
-                width: 360px;
-                padding: 20px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="wrapper">
+<!DOCTYPE php>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<header>
+    <div>
+        <a href="../index.php"><img class="logo" src="../Images/Logo.png" alt="logo" /></a>
+    </div>
+    <div class="nav-search">
+        <select class="select-search">
+            <option>All</option>
+            <option>All Categories</option>
+        </select>
+        <input type="text" placeholder="Search" class="search-input" />
+        <div class="search-icon">
+            <span class="material-symbols-outlined">search</span>
+        </div>
+    </div>
+</header>
+
+<body>
+    <div class="wrapper">
+        <div class="login-box">
             <h2>Sign Up</h2>
             <p>Please fill this form to create an account.</p>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <input type="text" name="username"
+                        class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $username; ?>">
                     <span class="invalid-feedback"><?php echo $username_err; ?></span>
-                </div>    
+                </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                    <input type="password" name="password"
+                        class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $password; ?>">
+                        <span class="invalid-feedback"><?php echo $password_err; ?></span>
                 </div>
                 <div class="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                    <input type="password" name="confirm_password"
+                        class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $confirm_password; ?>">
                     <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                 </div>
                 <div class="form-group">
@@ -97,6 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <p>Already have an account? <a href="login.php">Login here</a>.</p>
             </form>
-        </div>    
-    </body>
-</html>
+        </div>
+    </div>
+</body>
+</php>

@@ -3,7 +3,7 @@
 session_start();
 
 //include dal file
-require_once "dal/DAL.php";
+require_once "../DALs/loginDAL.php";
 
 // Check if the user is logged in, otherwise redirect to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
