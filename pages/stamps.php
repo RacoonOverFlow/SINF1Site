@@ -102,7 +102,7 @@
     <section class="collection_container">
       <div class="collection_box_primary">
         <div class="collection_image">
-          <img src="C:\Users\viole\Pictures\games\stamps_Travel.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
+          <img src="stamps_Travel.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
         </div>
         <div class="collection_text">
           <a href="#stamp.php"><h1>Green Travel</h1>
@@ -120,7 +120,25 @@
       <section class="collection_container">
         <div class="collection_box_primary">
           <div class="collection_image">
-            <img src="C:\Users\viole\Pictures\games\stamps_express_delivered.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
+            <img src="stamps_express_delivered.jpg" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
+          </div>
+          <div class="collection_text">
+            <a href="#stamp.html"><h1>Green Travel</h1>
+            <h1>Travel Edition</h1></a>
+          </div>
+          <div class="icon-container">
+            <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon"></a>
+            <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon"></a>
+            <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon"></a>
+            <a href="#more"><img src="../Images/icons/more.png" alt="More Icon"></a>
+          </div>
+        </div>
+        </section>
+
+        <section class="collection_container">
+        <div class="collection_box_primary">
+          <div class="collection_image">
+            <img src="stamp_australia.png" alt="Could not find image" style="max-width: 100%; max-height: 100%;">
           </div>
           <div class="collection_text">
             <a href="#stamp.php"><h1>Green Travel</h1>
@@ -138,10 +156,10 @@
         <script>
           const subcategoryOptions = {
             Animals: ["All", "Pandas", "Shrimps", "Mew"],
-            Cities: ["London", "Portugal", "New York"],
+            Cities: ["Australia", "Portugal", "New York"],
             Travel: ["Airport", "Planes", "Trains", "Cars"],
             Famous_spots: ["Eiffel Tower", "Statue of Liberty", "Big Ben"],
-            all: ["Pandas","Shrimps","Mew","London","Portugal","New York","Airport","Planes","Trains",
+            all: ["Pandas","Shrimps","Mew","Australia","Portugal","New York","Airport","Planes","Trains",
               "Cars","Eiffel Tower","Statue of Liberty","Big Ben",],
           };
     
