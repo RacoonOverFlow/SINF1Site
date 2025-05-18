@@ -142,7 +142,7 @@
           />
         </div>
         <div class="collection_text">
-          <a href="#pokemon_1v1_porto.php"><h1>Pokemon 1v1 Porto</h1></a>
+          <a href="../pages/pokemon_1v1_porto.php"><h1>Pokemon 1v1 Porto</h1></a>
         </div>
         <div class="icon-container">
           <a href="#favorite"
