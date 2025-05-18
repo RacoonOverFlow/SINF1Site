@@ -2,19 +2,19 @@
 class DAL {
 
     //database name
-    private $DB_NAME = 'SINF1';
+    private $DB_NAME = 'website';
     //host tipically is the localhost
     private $DB_HOST = 'localhost';
     //database username
-    private $DB_USER = 'sinf1';
+    private $DB_USER = 'root';
     //password for the username metioned 
-    private $DB_PASS = '1234';
+    private $DB_PASS = '';
     
     private $link = null;
 
     public function __construct() {
         //open connection
-        $this->link = new mysqli($this->DB_HOST, $this->DB_USER, $this->DB_PASS, $this->DB_NAME);
+        $this->link = new mysqli($this->DB_HOST, $this->DB_USER, '', $this->DB_NAME);
         if (mysqli_connect_errno())
             return NULL;
     }

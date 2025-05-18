@@ -1,12 +1,20 @@
-
 <!DOCTYPE php>
 <php lang="en">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const categorySelect = document.getElementById('category-select');
 
+      categorySelect.addEventListener('change', function () {
+        const selectedCategory = this.value;
+        window.location.href = window.location.pathname + '?category=' + encodeURIComponent(selectedCategory);
+      });
+    });
+  </script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cards</title>
-    <link rel="stylesheet" href="../css/cards.css" />
+    <link rel="stylesheet" href="../css/card.css" />
     <link rel="stylesheet" href="../css/test.css" />
     <link
       rel="stylesheet"
@@ -25,7 +33,7 @@
     <header>
       <div>
         <a href="../index.php"
-          ><img class="logo" src="../Images/Logo.png" alt="logo" 
+          ><img class="logo" src="../Images/Logo.png" alt="logo"
         /></a>
       </div>
       <div class="nav-search">
@@ -90,87 +98,57 @@
     <section class="filters">
       <div>
         <select id="category-select" class="category-dropdown">
-          <option value="all" disabled selected>Category</option>
-          <option value="all">All</option>
-          <option value="pokemon">Pokemon</option>
-          <option value="digimon">Digimon</option>
-          <option value="invisimals">Invizimals</option>
-          <option value="yugioh">Yugioh</option>
-          <option value="bankai">Bankai</option>
-        </select>
-      </div>
-      <div>
-        <select id="subcategory-select" class="category-dropdown">
-          <option value="all" disabled selected>Subcategory</option>
-        </select>
-      </div>
-      <div class="checkbox-container" id="checkbox-container">
-        <!-- Checkboxes will be dynamically added here -->
+          <option value="" disabled selected>Category</option>
+          <option value="">All</option>
+          <option value="trading">Trading Cards</option>
+          <option value="collectible">Collectible Cards</option>
+          <option value="gaming">Gaming Cards</option>
+          </select>
       </div>
     </section>
     <hr class="filters-hr" />
+    <?php
+      require_once '../DALs/cardsDAL.php';
 
-    <section class="collection_container">
-      <div class="collection_box_primary">
-        <div class="collection_image">
-          <img
-            src="../Images/cards/pokemon/Mew-cbr11.jpg"
-            alt="Could not find image"
-            style="max-width: 100%; max-height: 100%"
-          />
-        </div>
-        <div class="collection_text">
-          <a href="#mew.php"
-            ><h1>Mew</h1>
-            <h1>Normal Edition</h1></a
-          >
-        </div>
-        <div class="icon-container">
-          <a href="#favorite"
-            ><img src="../Images/icons/favorite.png" alt="Favorite Icon"
-          /></a>
-          <a href="#search"
-            ><img src="../Images/icons/search.png" alt="Search Icon"
-          /></a>
-          <a href="#photos"
-            ><img src="../Images/icons/photos.png" alt="Photos Icon"
-          /></a>
-          <a href="#more"
-            ><img src="../Images/icons/more.png" alt="More Icon"
-          /></a>
-        </div>
-      </div>
+      $dal = new DAL_Cards();
+      $category = isset($_GET['category']) ? $_GET['category'] : '';
 
-      <div class="collection_box_primary">
-        <div class="collection_image">
-          <img
-            src="../Images/cards/pokemon/charizardVShiny.png"
-            alt="Could not find image"
-            style="max-width: 100%; max-height: 100%"
-          />
-        </div>
-        <div class="collection_text">
-          <a href="../pages/charizard_card.php"
-            ><h1>Charizard V Shiny</h1>
-            <h1>Normal Edition</h1></a
-          >
-        </div>
-        <div class="icon-container">
-          <a href="#favorite"
-            ><img src="../Images/icons/favorite.png" alt="Favorite Icon"
-          /></a>
-          <a href="#search"
-            ><img src="../Images/icons/search.png" alt="Search Icon"
-          /></a>
-          <a href="#photos"
-            ><img src="../Images/icons/photos.png" alt="Photos Icon"
-          /></a>
-          <a href="#more"
-            ><img src="../Images/icons/more.png" alt="More Icon"
-          /></a>
-        </div>
-      </div>
-    </section>
+      $cards = $dal->getAllCards($category);
+
+      // Start grid container
+      echo '<div class="card-grid">';
+
+      foreach ($cards as $card) {
+        echo '
+        <div class="collection_box_primary">
+          <div class="collection_image">
+            <img
+              src="' . htmlspecialchars($card["img_path"]) . '"
+              alt="Image not found"
+              style="max-width: 100%; max-height: 100%"
+            />
+          </div>
+          <div class="collection_text">
+            <a href="card_details.php?id=' . htmlspecialchars($card["id"]) . '">
+              <h1>' . htmlspecialchars($card["name"]) . '</h1>
+              <p>' . htmlspecialchars($card["edition"]) . ' - ' . htmlspecialchars($card["rareness"]) . '</p>
+            </a>
+          </div>
+          <div class="icon-container">
+            <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon" /></a>
+            <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon" /></a>
+            <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon" /></a>
+            <a href="#more"><img src="../Images/icons/more.png" alt="More Icon" /></a>
+          </div>
+        </div>';
+      }
+
+      // End grid container
+      echo '</div>';
+
+      $dal->closeConn();
+    ?>
+
   </body>
 </php>
 <script src="../js/mainPage.js"></script>
