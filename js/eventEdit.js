@@ -60,6 +60,7 @@ function startEdit(data) {
     `;
 
 document.getElementById('save-btn').onclick = function() {
+    console.log('Save button clicked');
     const dateInput = document.getElementById('date-input').value.trim();
     if (!dateInput) {
         alert('Date is required.');
@@ -80,7 +81,7 @@ document.getElementById('save-btn').onclick = function() {
       date: dateInput,
       place: document.getElementById('location-input').value,
       description: document.getElementById('description-input').value,
-      title: document.getElementById('event_title').textContent,
+      title: data.title, // <-- Use the title from the data object
       img_path: document.getElementById('img-input').value,
       user_id: details.dataset.userId || 1
     };
