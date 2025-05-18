@@ -2,9 +2,18 @@
 // Include dal file
 require_once "../DALs/loginDAL.php";
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+// Initialize the session
+
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
+$email = "";
+$email_err = "";
+$brith_date = "";
+$brith_date_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,22 +25,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username_err = "Username can only contain letters, numbers, and underscores.";
     } else {
         $dal = new DAL();
-        if ($dal->existUser($username) != null) {
+        $username = trim($_POST["username"]);
+        if ($dal->existUser($username)) {
             $username_err = "This username is already taken.";
-        } else {
-            $username = trim($_POST["username"]);
         }
         // Close statement
         $dal->closeConn();
     }
 
     // Validate password
-    if (empty(trim($_POST["password"]))) {
+    if (empty(trim($_POST["password_hash"]))) {
         $password_err = "Please enter a password.";
-    } elseif (strlen(trim($_POST["password"])) < 6) {
+    } elseif (strlen(trim($_POST["password_hash"])) < 6) {
         $password_err = "Password must have atleast 6 characters.";
     } else {
-        $password = trim($_POST["password"]);
+        $password = trim($_POST["password_hash"]);
     }
 
     // Validate confirm password
@@ -44,18 +52,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Check input errors before inserting in database
-    if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
+    // Validate email
+    if (empty(trim($_POST["email"]))) {
+        $email_err = "Please enter an email.";
+    } elseif (!filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL)) {
+        $email_err = "Please enter a valid email address.";
+    } else {
+        $email = trim($_POST["email"]);
+    }
+
+    $birth_date = "";
+    if (!empty($_POST['birth_date'])) {
+        $birth_date = date('Y-m-d', strtotime($_POST['birth_date']));
+    } else {
+        // Handle error, birth_date is required
+        $birth_date_err = "Please enter your birth date.";
+    }
+
+
+    if (empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($birth_date_err)) {
         $dal = new DAL();
-        $dal->registerUser($username, $password);
-        // Close connection
+        $dal->registerUser($username, $password, $email, $birth_date);
         $dal->closeConn();
     }
+
 
 }
 ?>
 
-<!DOCTYPE php>
+<!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
@@ -96,11 +121,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="invalid-feedback"><?php echo $username_err; ?></span>
                 </div>
                 <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email"
+                        class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $email; ?>">
+                    <span class="invalid-feedback"><?php echo $email_err; ?></span>
+                </div>
+                <div class="form-group">
+                    <label>Birth Date</label>
+                    <input type="date" name="birth_date"
+                        class="form-control <?php echo (!empty($birth_date_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo htmlspecialchars($birth_date ?? ''); ?>">
+                    <span class="invalid-feedback"><?php echo $birth_date_err; ?></span>
+                </div>
+
+                <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password"
+                    <input type="password" name="password_hash"
                         class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $password; ?>">
-                        <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
                 </div>
                 <div class="form-group">
                     <label>Confirm Password</label>
@@ -118,4 +158,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </body>
-</php>
+
+</html>
