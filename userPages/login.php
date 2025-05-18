@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $_SESSION["username"] = $username;
 
       // Redirect user to welcome page
-      header("location: welcome.php");
+      header("location: profil.php");
     } else {
       // Username doesn't exist, display a generic error message
 
