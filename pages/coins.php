@@ -1,3 +1,4 @@
+
 <!DOCTYPE php>
 <php lang="en">
   <script>
@@ -13,8 +14,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Events</title>
-    <link rel="stylesheet" href="../css/event.css" />
+    <title>Coins</title>
+    <link rel="stylesheet" href="../css/coin.css" />
     <link rel="stylesheet" href="../css/test.css" />
     <link
       rel="stylesheet"
@@ -33,7 +34,7 @@
     <header>
       <div>
         <a href="../index.php"
-          ><img class="logo" src="../Images/Logo.png" alt="logo"
+          ><img class="logo" src="../Images/Logo.png" alt="logo" 
         /></a>
       </div>
       <div class="nav-search">
@@ -100,48 +101,45 @@
         <select id="category-select" class="category-dropdown">
           <option value="" disabled selected>Category</option>
           <option value="">All</option>
-          <option value="conventions">Conventions</option>
-          <option value="auctions">Auctions</option>
-          <option value="meetups">Meetups</option>
-          </select>
+          <option value="currency">Currency</option>
+          <option value="conmemorative">Conmemorative</option>
+        </select>
       </div>
-      <div class="checkbox-container" id="checkbox-container">
-        </div>
     </section>
     <hr class="filters-hr" />
     <?php
-      require_once '../DALs/eventsDAL.php';
+      require_once '../DALs/coinsDAL.php';
 
-      $dal = new DAL_Events();
+      $dal = new DAL_Coins();
       $category = isset($_GET['category']) ? $_GET['category'] : '';
 
-      $events = $dal->getAllEvents($category);
+      $coins = $dal->getAllCoins($category);
 
       // Start grid container
-      echo '<div class="event-grid">';
+      echo '<div class="coin-grid">';
 
-      foreach ($events as $event) {
+      foreach ($coins as $coin) {
         echo '
         <div class="collection_box_primary">
-          <div class="collection_image">
-            <img
-              src="' . htmlspecialchars($event["img_path"]) . '"
-              alt="Image not found"
-              style="max-width: 100%; max-height: 100%"
-            />
-          </div>
-          <div class="collection_text">
-            <a href="event_details.php?id=' . htmlspecialchars($event["id"]) . '">
-              <h1>' . htmlspecialchars($event["title"]) . '</h1>
-              <p>' . htmlspecialchars($event["place"]) . ' - ' . htmlspecialchars($event["date"]) . '</p>
-            </a>
-          </div>
-          <div class="icon-container">
-            <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon" /></a>
-            <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon" /></a>
-            <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon" /></a>
-            <a href="#more"><img src="../Images/icons/more.png" alt="More Icon" /></a>
-          </div>
+            <div class="collection_image">
+                <img
+                    src="' . htmlspecialchars($coin["img_path"]) . '"
+                    alt="Image not found"
+                    style="max-width: 100%; max-height: 100%"
+                />
+            </div>
+            <div class="collection_text">
+                <a href="coin_details.php?id=' . htmlspecialchars($coin["id"]) . '">
+                    <h1>' . htmlspecialchars($coin["coin_name"]) . '</h1>
+                    <h1>' . htmlspecialchars($coin["denomination"]) . '</h1>
+                </a>
+            </div>
+            <div class="icon-container">
+                <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon" /></a>
+                <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon" /></a>
+                <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon" /></a>
+                <a href="#more"><img src="../Images/icons/more.png" alt="More Icon" /></a>
+            </div>
         </div>';
       }
 
@@ -154,4 +152,4 @@
   </body>
 </php>
 <script src="../js/mainPage.js"></script>
-<script src="../js/events.js"></script>
+<script src="../js/cards.js"></script>
