@@ -3,6 +3,10 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 //include dal file
 require_once "../DALs/loginDAL.php";
@@ -28,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   // Check if password is empty
-  if (empty(trim($_POST["password"]))) {
+  if (empty(trim($_POST["password_hash"]))) {
     $password_err = "Please enter your password.";
   } else {
-    $password = trim($_POST["password"]);
+    $password = trim($_POST["password_hash"]);
   }
 
   // Validate credentials
@@ -116,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="form-group">
           <label>Password</label>
-          <input type="password" name="password"
+          <input type="password" name="password_hash"
             class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
           <span class="invalid-feedback"><?php echo $password_err; ?></span>
         </div>
