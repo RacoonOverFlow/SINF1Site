@@ -49,7 +49,7 @@
           <p>Username</p>
         </div>
         <div class="logout">
-        <button type="button" class="btn btn-default btn-sm">
+        <button type="button" class="btn btn-default btn-sm" href="userPages/logout.php">
             <span class="glyphicon glyphicon-log-out"></span> Log out
         </button>
         </div>
