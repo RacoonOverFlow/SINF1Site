@@ -1,11 +1,20 @@
 <!DOCTYPE php>
 <php lang="en">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const categorySelect = document.getElementById('category-select');
+
+      categorySelect.addEventListener('change', function () {
+        const selectedCategory = this.value;
+        window.location.href = window.location.pathname + '?category=' + encodeURIComponent(selectedCategory);
+      });
+    });
+  </script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Events</title>
-    <link rel="stylesheet" href="../css/events.css" />
-
+    <link rel="stylesheet" href="../css/event.css" />
     <link rel="stylesheet" href="../css/test.css" />
     <link
       rel="stylesheet"
@@ -24,7 +33,7 @@
     <header>
       <div>
         <a href="../index.php"
-          ><img class="logo" src="../Images/Logo.png" alt="logo" 
+          ><img class="logo" src="../Images/Logo.png" alt="logo"
         /></a>
       </div>
       <div class="nav-search">
@@ -68,69 +77,80 @@
       </ul>
     </nav>
 
+    <div class="more-categories" id="more-categories">
+      <ul>
+        <li><a href="category1.php">Category 1</a></li>
+        <li><a href="category2.php">Category 2</a></li>
+        <li><a href="category3.php">Category 3</a></li>
+        <li><a href="category4.php">Category 4</a></li>
+      </ul>
+    </div>
+
+    <div class="more-categories" id="more-categories">
+      <ul>
+        <li><a href="category1.php">Category 1</a></li>
+        <li><a href="category2.php">Category 2</a></li>
+        <li><a href="category3.php">Category 3</a></li>
+        <li><a href="category4.php">Category 4</a></li>
+      </ul>
+    </div>
+
     <section class="filters">
       <div>
         <select id="category-select" class="category-dropdown">
-          <option value="all" disabled selected>Category</option>
-          <option value="all">All</option>
-          <option value="pokemon">Pokemon</option>
-          <option value="digimon">Digimon</option>
-          <option value="invisimals">Invizimals</option>
-          <option value="yugioh">Yugioh</option>
-          <option value="bankai">Bankai</option>
-        </select>
-      </div>
-      <div>
-        <select id="subcategory-select" class="category-dropdown">
-          <option value="all" disabled selected>Subcategory</option>
-          <option value="card-tournaments">Card Tournaments</option>
-          <option value="meet-and-greets">Meet and Greets</option>
-          <option value="watch-parties">Watch Parties</option>
-          <option value="release-beta-testing">Release Beta Testing</option>
-          <option value="ashton-halling">Ashton Halling</option>
-        </select>
+          <option value="" disabled selected>Category</option>
+          <option value="">All</option>
+          <option value="conventions">Conventions</option>
+          <option value="auctions">Auctions</option>
+          <option value="meetups">Meetups</option>
+          </select>
       </div>
       <div class="checkbox-container" id="checkbox-container">
-        <label><input type="checkbox" class="styled-checkbox" /> 1v1</label>
-        <label><input type="checkbox" class="styled-checkbox" /> 2v2</label>
-        <label
-          ><input type="checkbox" class="styled-checkbox" /> Presential</label
-        >
-        <label><input type="checkbox" class="styled-checkbox" /> Online</label>
-        <label
-          ><input type="checkbox" class="styled-checkbox" /> Base Cards</label
-        >
-      </div>
+        </div>
     </section>
     <hr class="filters-hr" />
+    <?php
+      require_once '../DALs/eventsDAL.php';
 
-    <section class="collection_container">
-      <div class="collection_box_primary">
-        <div class="collection_image">
-          <img
-            src="../Images/events/ppltourn.png"
-            alt="Pokemon 8 PP Tournament"
-            style="max-width: 100%; max-height: 100%"
-          />
-        </div>
-        <div class="collection_text">
-          <a href="#pptourn.php"><h1>Pokemon 8 PP Tournament</h1></a>
-        </div>
-        <div class="icon-container">
-          <a href="#favorite"
-            ><img src="../Images/icons/favorite.png" alt="Favorite Icon"
-          /></a>
-          <a href="#search"
-            ><img src="../Images/icons/search.png" alt="Search Icon"
-          /></a>
-          <a href="#photos"
-            ><img src="../Images/icons/photos.png" alt="Photos Icon"
-          /></a>
-          <a href="#more"
-            ><img src="../Images/icons/more.png" alt="More Icon"
-          /></a>
-        </div>
-      </div>
+      $dal = new DAL_Events();
+      $category = isset($_GET['category']) ? $_GET['category'] : '';
+
+      $events = $dal->getAllEvents($category);
+
+      // Start grid container
+      echo '<div class="event-grid">';
+
+      foreach ($events as $event) {
+        echo '
+        <div class="collection_box_primary">
+          <div class="collection_image">
+            <img
+              src="' . htmlspecialchars($event["img_path"]) . '"
+              alt="Image not found"
+              style="max-width: 100%; max-height: 100%"
+            />
+          </div>
+          <div class="collection_text">
+            <a href="event_details.php?id=' . htmlspecialchars($event["id"]) . '">
+              <h1>' . htmlspecialchars($event["title"]) . '</h1>
+              <p>' . htmlspecialchars($event["place"]) . ' - ' . htmlspecialchars($event["date"]) . '</p>
+            </a>
+          </div>
+          <div class="icon-container">
+            <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon" /></a>
+            <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon" /></a>
+            <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon" /></a>
+            <a href="#more"><img src="../Images/icons/more.png" alt="More Icon" /></a>
+          </div>
+        </div>';
+      }
+
+      // End grid container
+      echo '</div>';
+
+      $dal->closeConn();
+    ?>
+
 
       <!-- New Pokemon 1v1 Porto Event -->
       <div class="collection_box_primary">
@@ -160,6 +180,8 @@
         </div>
       </div>
     </section>
+
   </body>
 </php>
 <script src="../js/mainPage.js"></script>
+<script src="../js/events.js"></script>

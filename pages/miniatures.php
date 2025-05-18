@@ -13,8 +13,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cards</title>
-    <link rel="stylesheet" href="../css/card.css" />
+    <title>Miniatures</title>
+    <link rel="stylesheet" href="../css/mini.css" />
     <link rel="stylesheet" href="../css/test.css" />
     <link
       rel="stylesheet"
@@ -100,38 +100,40 @@
         <select id="category-select" class="category-dropdown">
           <option value="" disabled selected>Category</option>
           <option value="">All</option>
-          <option value="trading">Trading Cards</option>
-          <option value="collectible">Collectible Cards</option>
-          <option value="gaming">Gaming Cards</option>
+          <option value="vehicles">Vehicles</option>
+          <option value="figures">Figures</option>
+          <option value="dioramas">Dioramas</option>
           </select>
       </div>
+      <div class="checkbox-container" id="checkbox-container">
+        </div>
     </section>
     <hr class="filters-hr" />
     <?php
-      require_once '../DALs/cardsDAL.php';
+      require_once '../DALs/miniaturesDAL.php';
 
-      $dal = new DAL_Cards();
+      $dal = new DAL_Miniatures();
       $category = isset($_GET['category']) ? $_GET['category'] : '';
 
-      $cards = $dal->getAllCards($category);
+      $miniatures = $dal->getAllMiniatures($category);
 
       // Start grid container
-      echo '<div class="card-grid">';
+      echo '<div class="miniature-grid">';
 
-      foreach ($cards as $card) {
+      foreach ($miniatures as $miniature) {
         echo '
         <div class="collection_box_primary">
           <div class="collection_image">
             <img
-              src="' . htmlspecialchars($card["img_path"]) . '"
+              src="' . htmlspecialchars($miniature["img_path"]) . '"
               alt="Image not found"
               style="max-width: 100%; max-height: 100%"
             />
           </div>
           <div class="collection_text">
-            <a href="card_details.php?id=' . htmlspecialchars($card["id"]) . '">
-              <h1>' . htmlspecialchars($card["name"]) . '</h1>
-              <p>' . htmlspecialchars($card["edition"]) . ' - ' . htmlspecialchars($card["rareness"]) . '</p>
+            <a href="miniature_details.php?id=' . htmlspecialchars($miniature["id"]) . '">
+              <h1>' . htmlspecialchars($miniature["name"]) . '</h1>
+              <p>' . htmlspecialchars(substr($miniature["description"], 0, 50)) . '...</p>
             </a>
           </div>
           <div class="icon-container">
@@ -152,4 +154,4 @@
   </body>
 </php>
 <script src="../js/mainPage.js"></script>
-<script src="../js/cards.js"></script>
+<script src="../js/miniatures.js"></script>

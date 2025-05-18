@@ -249,3 +249,36 @@ header {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   font-weight: bold;
 }
+
+.user-icon{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  color: var(--main-color);
+}
+
+.users{
+  display: flex;  
+  margin-left: auto;
+  padding-left: 30px;
+  width: 400px;
+  height: 40px;
+  border-radius: 4px;
+  align-self: center;
+  align-items: center;
+}
+
+.user-name{
+  padding-right: 10px;
+}
+
+.logout{
+
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}

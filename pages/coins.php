@@ -1,3 +1,4 @@
+
 <!DOCTYPE php>
 <php lang="en">
   <script>
@@ -13,8 +14,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cards</title>
-    <link rel="stylesheet" href="../css/card.css" />
+    <title>Coins</title>
+    <link rel="stylesheet" href="../css/coin.css" />
     <link rel="stylesheet" href="../css/test.css" />
     <link
       rel="stylesheet"
@@ -33,7 +34,7 @@
     <header>
       <div>
         <a href="../index.php"
-          ><img class="logo" src="../Images/Logo.png" alt="logo"
+          ><img class="logo" src="../Images/Logo.png" alt="logo" 
         /></a>
       </div>
       <div class="nav-search">
@@ -100,46 +101,45 @@
         <select id="category-select" class="category-dropdown">
           <option value="" disabled selected>Category</option>
           <option value="">All</option>
-          <option value="trading">Trading Cards</option>
-          <option value="collectible">Collectible Cards</option>
-          <option value="gaming">Gaming Cards</option>
-          </select>
+          <option value="currency">Currency</option>
+          <option value="conmemorative">Conmemorative</option>
+        </select>
       </div>
     </section>
     <hr class="filters-hr" />
     <?php
-      require_once '../DALs/cardsDAL.php';
+      require_once '../DALs/coinsDAL.php';
 
-      $dal = new DAL_Cards();
+      $dal = new DAL_Coins();
       $category = isset($_GET['category']) ? $_GET['category'] : '';
 
-      $cards = $dal->getAllCards($category);
+      $coins = $dal->getAllCoins($category);
 
       // Start grid container
-      echo '<div class="card-grid">';
+      echo '<div class="coin-grid">';
 
-      foreach ($cards as $card) {
+      foreach ($coins as $coin) {
         echo '
         <div class="collection_box_primary">
-          <div class="collection_image">
-            <img
-              src="' . htmlspecialchars($card["img_path"]) . '"
-              alt="Image not found"
-              style="max-width: 100%; max-height: 100%"
-            />
-          </div>
-          <div class="collection_text">
-            <a href="card_details.php?id=' . htmlspecialchars($card["id"]) . '">
-              <h1>' . htmlspecialchars($card["name"]) . '</h1>
-              <p>' . htmlspecialchars($card["edition"]) . ' - ' . htmlspecialchars($card["rareness"]) . '</p>
-            </a>
-          </div>
-          <div class="icon-container">
-            <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon" /></a>
-            <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon" /></a>
-            <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon" /></a>
-            <a href="#more"><img src="../Images/icons/more.png" alt="More Icon" /></a>
-          </div>
+            <div class="collection_image">
+                <img
+                    src="' . htmlspecialchars($coin["img_path"]) . '"
+                    alt="Image not found"
+                    style="max-width: 100%; max-height: 100%"
+                />
+            </div>
+            <div class="collection_text">
+                <a href="coin_details.php?id=' . htmlspecialchars($coin["id"]) . '">
+                    <h1>' . htmlspecialchars($coin["coin_name"]) . '</h1>
+                    <h1>' . htmlspecialchars($coin["denomination"]) . '</h1>
+                </a>
+            </div>
+            <div class="icon-container">
+                <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon" /></a>
+                <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon" /></a>
+                <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon" /></a>
+                <a href="#more"><img src="../Images/icons/more.png" alt="More Icon" /></a>
+            </div>
         </div>';
       }
 
