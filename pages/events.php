@@ -151,6 +151,36 @@
       $dal->closeConn();
     ?>
 
+
+      <!-- New Pokemon 1v1 Porto Event -->
+      <div class="collection_box_primary">
+        <div class="collection_image">
+          <img
+            src="../Images/events/1v1.png"
+            alt="Pokemon 1v1 Porto"
+            style="max-width: 100%; max-height: 100%"
+          />
+        </div>
+        <div class="collection_text">
+          <a href="../pages/pokemon_1v1_porto.php"><h1>Pokemon 1v1 Porto</h1></a>
+        </div>
+        <div class="icon-container">
+          <a href="#favorite"
+            ><img src="../Images/icons/favorite.png" alt="Favorite Icon"
+          /></a>
+          <a href="#search"
+            ><img src="../Images/icons/search.png" alt="Search Icon"
+          /></a>
+          <a href="#photos"
+            ><img src="../Images/icons/photos.png" alt="Photos Icon"
+          /></a>
+          <a href="#more"
+            ><img src="../Images/icons/more.png" alt="More Icon"
+          /></a>
+        </div>
+      </div>
+    </section>
+
   </body>
 </php>
 <script src="../js/mainPage.js"></script>
