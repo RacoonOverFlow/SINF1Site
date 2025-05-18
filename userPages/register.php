@@ -26,12 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Validate password
-    if (empty(trim($_POST["password"]))) {
+    if (empty(trim($_POST["password_hash"]))) {
         $password_err = "Please enter a password.";
-    } elseif (strlen(trim($_POST["password"])) < 6) {
+    } elseif (strlen(trim($_POST["password_hash"])) < 6) {
         $password_err = "Password must have atleast 6 characters.";
     } else {
-        $password = trim($_POST["password"]);
+        $password = trim($_POST["password_hash"]);
     }
 
     // Validate confirm password
@@ -97,14 +97,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password"
+                    <input type="password" name="password_hash"
                         class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $password; ?>">
                         <span class="invalid-feedback"><?php echo $password_err; ?></span>
                 </div>
                 <div class="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" name="confirm_password"
+                    <input type="password" name="confirm_password_hash"
                         class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $confirm_password; ?>">
                     <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>

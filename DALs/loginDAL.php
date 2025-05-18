@@ -25,7 +25,7 @@ class DAL {
     }
 
     public function existUser($username) {
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
+        $sql = "SELECT * FROM users WHERE username = ?";
 
         if ($stmt = mysqli_prepare($this->link, $sql)) {
             // Bind variables to the prepared statement as parameters
@@ -50,7 +50,7 @@ class DAL {
     }
 
     public function checkUser($username, $password) {
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
+        $sql = "SELECT * FROM users WHERE username = ?";
         $stmt = $this->existUser($username);
         if ($stmt != null) {
             // Bind result variables
@@ -72,7 +72,7 @@ class DAL {
 
     public function registerUser($username, $password) {
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
 
         if ($stmt = mysqli_prepare($this->link, $sql)) {
             // Bind variables to the prepared statement as parameters
