@@ -1,110 +1,99 @@
-<?php
-class DAL {
+    <?php
+    class DAL {
 
-    //database name
-    private $DB_NAME = 'website';
-    //host tipically is the localhost
-    private $DB_HOST = 'localhost';
-    //database username
-    private $DB_USER = 'root';
-    //password for the username metioned 
-    private $DB_PASS = '';
-    
-    private $link = null;
+        //database name
+        private $DB_NAME = 'website';
+        //host tipically is the localhost
+        private $DB_HOST = 'localhost';
+        //database username
+        private $DB_USER = 'root';
+        //password for the username metioned 
+        private $DB_PASS = '';
+        
+        private $link = null;
 
-    public function __construct() {
-        //open connection
-        $this->link = new mysqli($this->DB_HOST, $this->DB_USER, '', $this->DB_NAME);
-        if (mysqli_connect_errno())
-            return NULL;
-    }
+        public function __construct() {
+            //open connection
+        $this->link = new mysqli($this->DB_HOST, $this->DB_USER, $this->DB_PASS, $this->DB_NAME);
+            if (mysqli_connect_errno())
+                return NULL;
+        }
 
-    public function closeConn() {
-        // Close connection
-        mysqli_close($this->link);
-    }
+        public function closeConn() {
+            // Close connection
+            mysqli_close($this->link);
+        }
 
     public function existUser($username) {
-        $sql = "SELECT * FROM users WHERE username = ?";
+        $sql = "SELECT id FROM users WHERE username = ?";
 
         if ($stmt = mysqli_prepare($this->link, $sql)) {
-            // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
 
-            // Set parameters
             $param_username = $username;
 
-            // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                // Store result
                 mysqli_stmt_store_result($stmt);
-
-                // Check if username exists, if yes then verify password
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    return $stmt;
-                } else {
-                    return null;
-                }
+                return mysqli_stmt_num_rows($stmt) === 1;
             }
         }
+        return false;
     }
+
 
     public function checkUser($username, $password) {
-        $sql = "SELECT * FROM users WHERE username = ?";
-        $stmt = $this->existUser($username);
-        if ($stmt != null) {
-            // Bind result variables
-            mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+        $sql = "SELECT id, username, password_hash FROM users WHERE username = ?";
+        
+        if ($stmt = mysqli_prepare($this->link, $sql)) {
+            mysqli_stmt_bind_param($stmt, "s", $username);
 
-            if (mysqli_stmt_fetch($stmt)) {
-                if (password_verify($password, $hashed_password)) {
-                    return True;
-                }else{
-                    return False;
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_bind_result($stmt, $id, $db_username, $hashed_password);
+
+                if (mysqli_stmt_fetch($stmt)) {
+                    return password_verify($password, $hashed_password);
                 }
-            } else {
+            }
+        }
+        return false;
+    }
+
+
+public function registerUser($username, $password, $email, $birth_date) {
+    $sql = "INSERT INTO users (username, password_hash, email, birth_date) VALUES (?, ?, ?, ?)";
+
+    if ($stmt = mysqli_prepare($this->link, $sql)) {
+        mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_password, $param_email, $param_birth_date);
+
+        $param_username = $username;
+        $param_password = password_hash($password, PASSWORD_DEFAULT);
+        $param_email = $email;
+        $param_birth_date = $birth_date;
+
+        if (mysqli_stmt_execute($stmt)) {
+            header("location: login.php");
+        } else {
+            echo "Oops! Something went wrong. Please try again later.";
+        }
+    }
+}
+
+
+
+        public function resetPassword($username, $password) {
+            $sql = "UPDATE users SET password_hash = ? WHERE username = ?";
+            if ($stmt = mysqli_prepare($this->link, $sql)) {
+                // Bind variables to the prepared statement as parameters
+                mysqli_stmt_bind_param($stmt, "ss", $param_password, $username);
+
+                // Set parameters
+                $param_password = password_hash($password, PASSWORD_DEFAULT);
+                
+                // Attempt to execute the prepared statement
+                if(mysqli_stmt_execute($stmt))
+                    return True;
                 return False;
             }
-        } else {
-            return False;
         }
+
     }
-
-    public function registerUser($username, $password) {
-        // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
-
-        if ($stmt = mysqli_prepare($this->link, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
-
-            // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                // Redirect to login page
-                header("location: login.php");
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-        }
-    }
-
-    public function resetPassword($username, $password) {
-        $sql = "UPDATE users SET password = ? WHERE username = ?";
-        if ($stmt = mysqli_prepare($this->link, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_password, $username);
-
-            // Set parameters
-            $param_password = password_hash($password, PASSWORD_DEFAULT);
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt))
-                return True;
-            return False;
-        }
-    }
-
-}
