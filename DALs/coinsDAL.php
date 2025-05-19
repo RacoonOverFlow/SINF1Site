@@ -117,5 +117,24 @@ class DAL_Coins {
 
         return array();
     }
+    public function searchByName($query) {
+        $stmt = $this->link->prepare("SELECT * FROM coins WHERE name LIKE CONCAT('%', ?, '%')");
+        $stmt->bind_param("s", $query);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getAllCoinCategories() {
+        $sql = "SELECT DISTINCT category FROM coins WHERE category IS NOT NULL AND category != ''";
+        $result = mysqli_query($this->link, $sql);
+        $categories = [];
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $categories[] = $row['category'];
+            }
+        }
+        return $categories;
+    }
+
+
 }
 ?>

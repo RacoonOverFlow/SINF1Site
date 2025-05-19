@@ -112,6 +112,30 @@ document.getElementById('save-btn').onclick = function() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    const deleteBtn = document.getElementById('delete-btn');
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', function () {
+            if (!confirm('Are you sure you want to delete this event?')) return;
+            const eventId = document.getElementById('event-details').dataset.eventId;
+            fetch('../actions/delete_event.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'id=' + encodeURIComponent(eventId)
+            })
+            .then(res => {
+                if (res.ok) {
+                    alert('Event deleted');
+                    window.location.href = '../pages/events.php';
+                } else {
+                    alert('Delete failed');
+                }
+            })
+            .catch(() => alert('Delete request failed'));
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
   const details = document.getElementById('event-details');
   const initialData = {
     category: document.getElementById('category-value').textContent,
