@@ -1,27 +1,27 @@
 <?php
-require_once '../DALs/eventsDAL.php';
+require_once '../DALs/comicsDAL.php';
+$dal = new DAL_Comics();
 
-$dal = new DAL_Events();
-
-$category = isset($_GET['category']) && $_GET['category'] !== 'all' ? $_GET['category'] : '';
+$category = isset($_GET['category']) ? $_GET['category'] : '';
 $query = isset($_GET['query']) ? $_GET['query'] : '';
-$categories = $dal->getAllEventCategories();
+$categoriesList = $dal->getComicCategories();
 
 if ($query !== '') {
-    $events = $dal->searchByName($query);
+    $comics = $dal->searchByName($query);
 } else {
-    $events = $dal->getAllEvents($category);
+    $comics = $dal->getAllComics($category);
 }
 
 $dal->closeConn();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Events</title>
-    <link rel="stylesheet" href="../css/event.css" />
+    <title>Comics</title>
+    <link rel="stylesheet" href="../css/comic.css" />
     <link rel="stylesheet" href="../css/test.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" />
@@ -29,18 +29,22 @@ $dal->closeConn();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const categorySelect = document.getElementById('category-select');
             if (categorySelect) {
                 categorySelect.addEventListener('change', function () {
                     const selectedCategory = this.value;
-                    window.location.href = window.location.pathname + '?category=' + encodeURIComponent(selectedCategory);
+                    const params = new URLSearchParams(window.location.search);
+                    if (selectedCategory) {
+                        params.set('category', selectedCategory);
+                    } else {
+                        params.delete('category');
+                    }
+                    window.location.search = params.toString();
                 });
             }
         });
-        
     </script>
 </head>
 <body>
@@ -83,8 +87,6 @@ $dal->closeConn();
     </div>
 </header>
 
-
-
 <nav class="dashboard">
     <ul>
         <li><a class="miniatures" href="../pages/miniatures.php">Miniatures</a></li>
@@ -93,11 +95,11 @@ $dal->closeConn();
         <li class="divider">|</li>
         <li><a class="coins" href="../pages/coins.php">Coins</a></li>
         <li class="divider">|</li>
-        <li><a class="comics" href="../pages/comics.php">Comics</a></li>
+        <li><a class="comics active" href="../pages/comics.php">Comics</a></li>
         <li class="divider">|</li>
         <li><a class="cards" href="../pages/cards.php">Cards</a></li>
         <li class="divider">|</li>
-        <li><a class="events active" href="../pages/events.php">Events</a></li>
+        <li><a class="events" href="../pages/events.php">Events</a></li>
         <li class="divider">|</li>
         <li><a class="collections" href="../pages/MyCollections.php">My Collections</a></li>
         <li class="divider">|</li>
@@ -105,18 +107,26 @@ $dal->closeConn();
     </ul>
 </nav>
 
+<div class="more-categories" id="more-categories">
+    <ul>
+        <li><a href="category1.php">Category 1</a></li>
+        <li><a href="category2.php">Category 2</a></li>
+        <li><a href="category3.php">Category 3</a></li>
+        <li><a href="category4.php">Category 4</a></li>
+    </ul>
+</div>
+
 <section class="filters">
     <div>
         <select id="category-select" class="category-dropdown">
-            <option value="" disabled selected>Category</option>
-            <option value="all" <?= $category === 'all' ? 'selected' : '' ?>>All</option>
-            <?php foreach ($categories as $cat): ?>
-                <option value="<?= htmlspecialchars($cat) ?>" <?= $cat === $category ? 'selected' : '' ?>>
+            <option value="" disabled <?= $category === '' ? 'selected' : '' ?>>Category</option>
+            <option value="">All</option>
+            <?php foreach ($categoriesList as $cat): ?>
+                <option value="<?= htmlspecialchars($cat) ?>" <?= $category === $cat ? 'selected' : '' ?>>
                     <?= htmlspecialchars(ucfirst($cat)) ?>
                 </option>
             <?php endforeach; ?>
         </select>
-
     </div>
     <div class="checkbox-container" id="checkbox-container">
         <label>
@@ -128,38 +138,32 @@ $dal->closeConn();
 
 <hr class="filters-hr" />
 
-<h1 class="page-title"></h1>
-
-<div class="event-grid">
-    <?php if (empty($events)): ?>
-        <p style="text-align:center;">No events found.</p>
+<div class="comic-grid">
+    <?php if (empty($comics)): ?>
+        <p>No comics found.</p>
     <?php else: ?>
-        <?php foreach ($events as $event): ?>
+        <?php foreach ($comics as $comic): ?>
             <div class="collection_box_primary">
                 <div class="collection_image">
-                    <img
-                            src="<?= htmlspecialchars($event["img_path"]) ?>"
-                            alt="Image not found"
-                            style="max-width: 100%; max-height: 100%"
-                    />
+                    <img src="<?= htmlspecialchars($comic["img_path"]) ?>" alt="Image not found" style="max-width: 100%; max-height: 100%" />
                 </div>
                 <div class="collection_text">
-                    <a href="event_details.php?id=<?= htmlspecialchars($event["id"]) ?>">
-                        <h1><?= htmlspecialchars($event["title"]) ?></h1>
-                        <p><?= htmlspecialchars($event["place"]) ?> - <?= htmlspecialchars($event["date"]) ?></p>
+                    <a href="comics_details.php?id=<?= htmlspecialchars($comic["id"]) ?>">
+                        <h1><?= htmlspecialchars($comic["name"]) ?></h1>
+                        <p><?= htmlspecialchars($comic["brand"]) ?> (<?= htmlspecialchars($comic["year"]) ?>)</p>
                     </a>
                 </div>
                 <div class="icon-container">
-                    <a href="#favorite" class="favorite-btn" data-id="<?= htmlspecialchars($event["id"]) ?>">
+                    <a href="#favorite" class="favorite-btn" data-id="<?= htmlspecialchars($comic["id"]) ?>">
                         <img src="../Images/icons/favorite.png" alt="Favorite Icon" />
                     </a>
-                    <a href="#search" class="search-category" data-category="<?= htmlspecialchars($event["category"]) ?>">
+                    <a href="#search" class="search-category" data-category="<?= htmlspecialchars($comic["category"]) ?>">
                         <img src="../Images/icons/search.png" alt="Search Icon" />
                     </a>
-                    <a href="#photos" class="photos-link" data-img="<?= htmlspecialchars($event["img_path"]) ?>">
+                    <a href="#photos" class="photos-link" data-img="<?= htmlspecialchars($comic["img_path"]) ?>">
                         <img src="../Images/icons/photos.png" alt="Photos Icon" />
                     </a>
-                    <a href="#more" class="more-link" data-id="<?= htmlspecialchars($event["id"]) ?>">
+                    <a href="#more" class="more-link" data-id="<?= htmlspecialchars($comic["id"]) ?>">
                         <img src="../Images/icons/more.png" alt="More Icon" />
                     </a>
                 </div>

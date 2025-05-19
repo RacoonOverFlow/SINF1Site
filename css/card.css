@@ -1,7 +1,20 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.collection_box_primary {
+  border-radius: 8px;
+  padding: 0.5rem;
+  background-color: white;
+  transition: transform 0.2s ease;
+}
 .category-dropdown {
   width: 200px;
   height: 40px;
-  background-color: #f28af7;
+  background-color: #8f83f6;
   color: white;
   border: none;
   outline: none;
@@ -10,13 +23,13 @@
 }
 
 .category-dropdown option {
-  background-color: #fce1ff;
+  background-color: #b0aae6;
   color: white;
   font-size: 18px;
 }
 
 .category-dropdown option:checked {
-  background-color: #f28af7;
+  background-color: #8f83f6;
 }
 
 .filters {
@@ -30,14 +43,14 @@
   width: 40px;
   height: 40px;
   appearance: none;
-  border: 2px solid #f28af7;
+  border: 2px solid #9483f6;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .styled-checkbox:checked {
-  background-color: #f28af7;
-  border-color: #f28af7;
+  background-color: #83d5f6;
+  border-color: #83d5f6;
 }
 
 .checkbox-container {
@@ -52,7 +65,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #f28af7;
+  color: #83d5f6;
 }
 
 .checkbox-container h2 {
@@ -62,7 +75,7 @@
 
 .filters-hr {
   border: none;
-  border-top: 2px solid #f28af7;
+  border-top: 2px solid #83d5f6;
   margin-top: 15px;
   margin-bottom: 20px;
 }
@@ -76,7 +89,7 @@
 }
 
 .collection_box_primary {
-  background-color: #fce1ff;
+  background-color: #f6f6f4;
   padding: 20px;
   width: 260px;
   text-align: center;
@@ -103,7 +116,7 @@
 
 .collection_text a {
   text-decoration: none;
-  color: #82d5f5;
+  color: #8d7ab1;
 }
 
 .icon-container {
