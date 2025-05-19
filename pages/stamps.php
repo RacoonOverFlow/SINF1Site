@@ -6,6 +6,7 @@
         <title>Stamps</title>
         <link rel="stylesheet" href="../css/stamp.css" />
         <link rel="stylesheet" href="../css/test.css" />
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
@@ -71,6 +72,8 @@
             </div>
         </div>
     </header>
+
+
 
 
 
@@ -178,3 +181,4 @@
 
 <script src="../js/mainPage.js"></script>
 <script src="../js/iconLogic.js"></script>
+
