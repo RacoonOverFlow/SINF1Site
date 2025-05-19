@@ -137,6 +137,12 @@ class DAL_Cards {
         }
         return $categories;
     }
+    public function addCard($name, $description, $img_path, $edition, $rareness, $condition, $category) {
+        $stmt = $this->link->prepare("INSERT INTO cards (name, description, img_path, edition, rareness, card_condition, category) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $name, $description, $img_path, $edition, $rareness, $condition, $category);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
 
 
 }

@@ -30,10 +30,25 @@ if (!$stamp) {
     exit;
 }
 
-$name = isset($data['name']) ? $data['name'] : $stamp['name'];
+// Use ternary operator instead of `??` for PHP < 7.0
+$name        = isset($data['name']) ? $data['name'] : $stamp['name'];
 $description = isset($data['description']) ? $data['description'] : $stamp['description'];
-$img_path = isset($data['img_path']) ? $data['img_path'] : $stamp['img_path'];
-$category = isset($data['category']) ? $data['category'] : $stamp['category'];
+$img_path    = isset($data['img_path']) ? $data['img_path'] : $stamp['img_path'];
+$country     = isset($data['country']) ? $data['country'] : $stamp['country'];
+$city        = isset($data['city']) ? $data['city'] : $stamp['city'];
+$year        = isset($data['year']) ? $data['year'] : $stamp['year'];
+$category    = isset($data['category']) ? $data['category'] : $stamp['category'];
 
-$success = $dal->updateStamp($data['id'], $name, $description, $img_path, $category);
+$success = $dal->updateStamp(
+    $data['id'],
+    $name,
+    $description,
+    $img_path,
+    $country,
+    $city,
+    $year,
+    $category
+);
+
 echo json_encode(["success" => $success]);
+?>
