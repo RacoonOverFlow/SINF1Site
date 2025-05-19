@@ -117,5 +117,34 @@ class DAL_Events {
 
         return array();
     }
+    public function searchByName($query) {
+        $sql = "SELECT * FROM events WHERE title LIKE ?";
+        $stmt = $this->link->prepare($sql);
+        $search = '%' . $query . '%';
+        $stmt->bind_param("s", $search);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $events = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $events[] = $row;
+        }
+
+        return $events;
+    }
+    public function getAllEventCategories() {
+        $categories = [];
+        $sql = "SELECT DISTINCT category FROM events WHERE category IS NOT NULL AND category != ''";
+        $result = mysqli_query($this->link, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $categories[] = $row['category'];
+            }
+        }
+        return $categories;
+    }
+
+
+
 }
 ?>

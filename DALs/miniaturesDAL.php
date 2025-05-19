@@ -114,5 +114,24 @@ class DAL_Miniatures {
 
         return array();
     }
+    public function searchByName($query) {
+        $stmt = $this->link->prepare("SELECT * FROM miniatures WHERE name LIKE CONCAT('%', ?, '%')");
+        $stmt->bind_param("s", $query);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getAllMiniatureCategories() {
+        $categories = [];
+        $sql = "SELECT DISTINCT category FROM miniatures WHERE category IS NOT NULL AND category != ''";
+        $result = mysqli_query($this->link, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $categories[] = $row['category'];
+            }
+        }
+        return $categories;
+    }
+
+
 }
 ?>
