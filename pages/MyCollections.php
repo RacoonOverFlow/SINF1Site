@@ -2,7 +2,7 @@
 session_start();
 require_once '../DALs/collectionsDAL.php';
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../userPages/login.php");
     exit;
 }

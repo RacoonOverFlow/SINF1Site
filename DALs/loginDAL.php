@@ -78,6 +78,54 @@ public function registerUser($username, $password, $email, $birth_date) {
     }
 }
 
+public function getUserByUsername($username) {
+    $sql = "SELECT id, username, email, birth_date FROM users WHERE username = ?";
+    
+    if ($stmt = mysqli_prepare($this->link, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $username);
+
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt, $id, $username, $email, $birth_date);
+            
+            if (mysqli_stmt_fetch($stmt)) {
+                return [
+                    'id' => $id,
+                    'username' => $username,
+                    'email' => $email,
+                    'birth_date' => $birth_date
+                ];
+            }
+        }
+    }
+    return null;
+}
+
+public function getUserById($id) {
+    $sql = "SELECT username, email, birth_date FROM users WHERE id = ?";
+    if ($stmt = mysqli_prepare($this->link, $sql)) {
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt, $username, $email, $birth_date);
+            if (mysqli_stmt_fetch($stmt)) {
+                return [
+                    'username' => $username,
+                    'email' => $email,
+                    'birth_date' => $birth_date
+                ];
+            }
+        }
+    }
+    return null;
+}
+
+public function updateUser($id, $username, $email, $birth_date) {
+    $sql = "UPDATE users SET username = ?, email = ?, birth_date = ? WHERE id = ?";
+    if ($stmt = mysqli_prepare($this->link, $sql)) {
+        mysqli_stmt_bind_param($stmt, "sssi", $username, $email, $birth_date, $id);
+        return mysqli_stmt_execute($stmt);
+    }
+    return false;
+}
 
 
         public function resetPassword($username, $password) {
