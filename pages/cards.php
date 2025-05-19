@@ -98,6 +98,8 @@ $dal->closeConn();
         <li><a class="events" href="events.php">Events</a></li>
         <li class="divider">|</li>
         <li><a class="collections" href="MyCollections.php">My Collections</a></li>
+        <li class="divider">|</li>
+        <li><a class="upload" href="../pages/upload/csv_coins.php">CSV Upload</a></li>
     </ul>
 </nav>
 
@@ -129,7 +131,7 @@ $dal->closeConn();
                         <img src="<?= htmlspecialchars($card["img_path"]) ?>" alt="Image not found" style="max-width: 100%; max-height: 100%" />
                     </div>
                     <div class="collection_text">
-                        <a href="card_details.php?id=<?= htmlspecialchars($card["id"]) ?>">
+                        <a href="cards_details.php?id=<?= htmlspecialchars($card["id"]) ?>">
                             <h1><?= htmlspecialchars($card["name"]) ?></h1>
                             <p><?= htmlspecialchars($card["edition"]) ?> - <?= htmlspecialchars($card["rareness"]) ?></p>
                         </a>

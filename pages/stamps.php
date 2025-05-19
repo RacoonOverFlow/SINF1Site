@@ -89,6 +89,8 @@
             <li><a class="events" href="../pages/events.php">Events</a></li>
             <li class="divider">|</li>
             <li><a class="collections" href="../pages/MyCollections.php">My Collections</a></li>
+            <li class="divider">|</li>
+            <li><a class="upload" href="../pages/upload/csv_coins.php">CSV Upload</a></li>
         </ul>
     </nav>
 
@@ -141,7 +143,7 @@
               />
             </div>
             <div class="collection_text">
-              <a href="stamp_details.php?id=' . htmlspecialchars($stamp["id"]) . '">
+              <a href="stamps_details.php?id=' . htmlspecialchars($stamp["id"]) . '">
                 <h1>' . htmlspecialchars($stamp["name"]) . '</h1>
                 <p>' . htmlspecialchars($stamp["country"]) . ', ' . htmlspecialchars($stamp["year"]) . '</p>
               </a>

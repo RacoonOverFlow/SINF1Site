@@ -67,6 +67,9 @@
             <li><a class="events" href="pages/events.php">Events</a></li>
             <li class="divider">|</li>
             <li><a class="collections" href="pages/MyCollections.php">My Collections</a></li>
+            <li class="divider">|</li>
+            <li><a class="upload" href="pages/upload/csv_coins.php">CSV Upload</a></li>
+
         </ul>
     </nav>
 

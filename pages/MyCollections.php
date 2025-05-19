@@ -55,10 +55,7 @@ $dal->closeConn();
         <li class="divider">|</li>
         <li><a class="collections active" href="../pages/MyCollections.php">My Collections</a></li>
         <li class="divider">|</li>
-        <li class="more">
-            <span class="menu hamburger material-symbols-outlined">menu</span>
-            More
-        </li>
+        <li><a class="upload" href="../pages/upload/csv_coins.php">CSV Upload</a></li>
     </ul>
 </nav>
 

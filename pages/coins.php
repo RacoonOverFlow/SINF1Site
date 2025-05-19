@@ -97,6 +97,8 @@ if ($query !== '') {
         <li><a class="events" href="../pages/events.php">Events</a></li>
         <li class="divider">|</li>
         <li><a class="collections" href="../pages/MyCollections.php">My Collections</a></li>
+        <li class="divider">|</li>
+        <li><a class="upload" href="../pages/upload/csv_coins.php">CSV Upload</a></li>
     </ul>
 </nav>
 
@@ -125,7 +127,7 @@ if ($query !== '') {
                     <img src="<?= htmlspecialchars($coin["img_path"]) ?>" alt="Image not found" style="max-width: 100%; max-height: 100%" />
                 </div>
                 <div class="collection_text">
-                    <a href="coin_details.php?id=<?= htmlspecialchars($coin["id"]) ?>">
+                    <a href="coins_details.php?id=<?= htmlspecialchars($coin["id"]) ?>">
                         <h1><?= htmlspecialchars($coin["coin_name"]) ?></h1>
                         <h1><?= htmlspecialchars($coin["denomination"]) ?></h1>
                     </a>

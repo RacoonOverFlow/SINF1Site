@@ -100,6 +100,8 @@ if ($query !== '') {
         <li><a class="events" href="../pages/events.php">Events</a></li>
         <li class="divider">|</li>
         <li><a class="collections" href="../pages/MyCollections.php">My Collections</a></li>
+        <li class="divider">|</li>
+        <li><a class="upload" href="../pages/upload/csv_coins.php">CSV Upload</a></li>
     </ul>
 </nav>
 
@@ -134,7 +136,7 @@ if ($query !== '') {
                     />
                 </div>
                 <div class="collection_text">
-                    <a href="miniature_details.php?id=<?= htmlspecialchars($miniature["id"]) ?>">
+                    <a href="miniatures_details.php?id=<?= htmlspecialchars($miniature["id"]) ?>">
                         <h1><?= htmlspecialchars($miniature["name"]) ?></h1>
                         <p><?= htmlspecialchars(substr($miniature["description"], 0, 50)) ?>...</p>
                     </a>
