@@ -114,6 +114,12 @@ if ($query !== '') {
             <?php endforeach; ?>
         </select>
     </div>
+    <div class="checkbox-container" id="checkbox-container">
+    <label>
+        <input type="checkbox" id="favorite-filter" class="styled-checkbox" />
+        <span>Favorites</span>
+    </label>
+</div>
 </section>
 <hr class="filters-hr" />
 
@@ -133,10 +139,18 @@ if ($query !== '') {
                     </a>
                 </div>
                 <div class="icon-container">
-                    <a href="#"><img src="../Images/icons/favorite.png" alt="Favorite Icon" /></a>
-                    <a href="#"><img src="../Images/icons/search.png" alt="Search Icon" /></a>
-                    <a href="#"><img src="../Images/icons/photos.png" alt="Photos Icon" /></a>
-                    <a href="#"><img src="../Images/icons/more.png" alt="More Icon" /></a>
+                    <a href="#favorite" class="favorite-btn" data-id="<?= htmlspecialchars($coin["id"]) ?>">
+                        <img src="../Images/icons/favorite.png" alt="Favorite Icon" />
+                    </a>
+                    <a href="#search" class="search-category" data-category="<?= htmlspecialchars($coin["category"]) ?>">
+                        <img src="../Images/icons/search.png" alt="Search Icon" />
+                    </a>
+                    <a href="#photos" class="photos-link" data-img="<?= htmlspecialchars($coin["img_path"]) ?>">
+                        <img src="../Images/icons/photos.png" alt="Photos Icon" />
+                    </a>
+                    <a href="#more" class="more-link" data-id="<?= htmlspecialchars($coin["id"]) ?>">
+                        <img src="../Images/icons/more.png" alt="More Icon" />
+                    </a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -144,5 +158,6 @@ if ($query !== '') {
 </div>
 
 <script src="../js/mainPage.js"></script>
+<script src="../js/iconLogic.js"></script>
 </body>
 </html>

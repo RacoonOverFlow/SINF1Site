@@ -7,7 +7,7 @@ if (!isset($_GET['id'])) {
 
 $eventId = intval($_GET['id']);
 $dal = new DAL_Events();
-$event = $dal->getEventById($eventId); // You'll need to add this method
+$event = $dal->getEventById($eventId);
 
 if (!$event) {
   die("Event not found.");
@@ -102,10 +102,11 @@ if (!$event) {
       <p>Location: <span id="location-value" style="color: #94cfde;"><?php echo htmlspecialchars($event['place']); ?></span></p>
       <p>Description: <span id="description-value" style="color: #94cfde;"><?php echo htmlspecialchars($event['description']); ?></span></p>
       <button id="edit-btn">Edit</button>
+      <button id="delete-btn" style="background-color: red; color: white;">Delete</button>
     </div>
   </section>
 
   <script src="../js/mainPage.js"></script>
-  <script src="../js/eventEdit.js"></script> <!-- New JS to handle editing -->
+  <script src="../js/eventEdit.js"></script>
 </body>
 </html>
