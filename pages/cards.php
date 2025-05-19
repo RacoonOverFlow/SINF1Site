@@ -162,6 +162,7 @@ $dal->closeConn();
     </div>
 </main>
 
+
 <script src="../js/mainPage.js"></script>
 <script src="../js/iconLogic.js"></script>
 </body>
