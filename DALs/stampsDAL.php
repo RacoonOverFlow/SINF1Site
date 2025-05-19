@@ -117,5 +117,12 @@ class DAL_Stamps {
 
         return array();
     }
+    public function searchByName($query) {
+        $stmt = $this->link->prepare("SELECT * FROM stamps WHERE name LIKE CONCAT('%', ?, '%')");
+        $stmt->bind_param("s", $query);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 ?>
