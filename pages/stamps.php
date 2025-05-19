@@ -113,7 +113,12 @@
                 <option value="special">Special Issues</option>
             </select>
         </div>
-        <div class="checkbox-container" id="checkbox-container"></div>
+        <div class="checkbox-container" id="checkbox-container">
+            <label>
+                <input type="checkbox" id="favorite-filter" class="styled-checkbox" />
+                <span>Favorites</span>
+            </label>
+        </div>
     </section>
     <hr class="filters-hr" />
 
@@ -134,27 +139,35 @@
 
     foreach ($stamps as $stamp) {
         echo '
-          <div class="collection_box_primary">
+        <div class="collection_box_primary">
             <div class="collection_image">
-              <img
+            <img
                 src="' . htmlspecialchars($stamp["img_path"]) . '"
                 alt="Image not found"
                 style="max-width: 100%; max-height: 100%"
-              />
+            />
             </div>
             <div class="collection_text">
-              <a href="stamps_details.php?id=' . htmlspecialchars($stamp["id"]) . '">
+            <a href="stamps_details.php?id=' . htmlspecialchars($stamp["id"]) . '">
                 <h1>' . htmlspecialchars($stamp["name"]) . '</h1>
                 <p>' . htmlspecialchars($stamp["country"]) . ', ' . htmlspecialchars($stamp["year"]) . '</p>
-              </a>
+            </a>
             </div>
             <div class="icon-container">
-              <a href="#favorite"><img src="../Images/icons/favorite.png" alt="Favorite Icon" /></a>
-              <a href="#search"><img src="../Images/icons/search.png" alt="Search Icon" /></a>
-              <a href="#photos"><img src="../Images/icons/photos.png" alt="Photos Icon" /></a>
-              <a href="#more"><img src="../Images/icons/more.png" alt="More Icon" /></a>
+            <a href="#favorite" class="favorite-btn" data-id="<?= htmlspecialchars($stamp["id"]) ?>">
+                <img src="../Images/icons/favorite.png" alt="Favorite Icon" />
+            </a>
+            <a href="#search" class="search-category" data-category="' . htmlspecialchars($stamp["category"]) . '">
+                <img src="../Images/icons/search.png" alt="Search Icon" />
+            </a>
+            <a href="#photos" class="photos-link" data-img="<?= htmlspecialchars($stamp["img_path"]) ?>">
+                <img src="../Images/icons/photos.png" alt="Photos Icon" />
+            </a>
+            <a href="#more" class="more-link" data-id="<?= htmlspecialchars($stamp["id"]) ?>">
+                <img src="../Images/icons/more.png" alt="More Icon" />
+            </a>
             </div>
-          </div>';
+        </div>';
     }
 
     echo '</div>';
@@ -164,3 +177,4 @@
 </php>
 
 <script src="../js/mainPage.js"></script>
+<script src="../js/iconLogic.js"></script>

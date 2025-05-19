@@ -115,6 +115,12 @@ $dal->closeConn();
             <?php endforeach; ?>
         </select>
     </div>
+    <div class="checkbox-container" id="checkbox-container">
+    <label>
+        <input type="checkbox" id="favorite-filter" class="styled-checkbox" />
+        <span>Favorites</span>
+    </label>
+</div>
 </section>
 
 <hr class="filters-hr" />
@@ -131,16 +137,24 @@ $dal->closeConn();
                         <img src="<?= htmlspecialchars($card["img_path"]) ?>" alt="Image not found" style="max-width: 100%; max-height: 100%" />
                     </div>
                     <div class="collection_text">
-                        <a href="cards_details.php?id=<?= htmlspecialchars($card["id"]) ?>">
-                            <h1><?= htmlspecialchars($card["name"]) ?></h1>
-                            <p><?= htmlspecialchars($card["edition"]) ?> - <?= htmlspecialchars($card["rareness"]) ?></p>
-                        </a>
+                      <a href="cards_details.php?id=<?= htmlspecialchars($card["id"]) ?>">
+                          <h1><?= htmlspecialchars($card["name"]) ?></h1>
+                          <p><?= htmlspecialchars($card["edition"]) ?> - <?= htmlspecialchars($card["rareness"]) ?></p>
+                      </a>
                     </div>
                     <div class="icon-container">
-                        <a href="#"><img src="../Images/icons/favorite.png" alt="Favorite" /></a>
-                        <a href="#"><img src="../Images/icons/search.png" alt="Search" /></a>
-                        <a href="#"><img src="../Images/icons/photos.png" alt="Photos" /></a>
-                        <a href="#"><img src="../Images/icons/more.png" alt="More" /></a>
+                      <a href="#favorite" class="favorite-btn" data-id="<?= htmlspecialchars($card["id"]) ?>">
+                          <img src="../Images/icons/favorite.png" alt="Favorite Icon" />
+                      </a>
+                      <a href="#search" class="search-category" data-category="<?= htmlspecialchars($card["category"]) ?>">
+                          <img src="../Images/icons/search.png" alt="Search Icon" />
+                      </a>
+                      <a href="#photos" class="photos-link" data-img="<?= htmlspecialchars($card["img_path"]) ?>">
+                          <img src="../Images/icons/photos.png" alt="Photos Icon" />
+                      </a>
+                      <a href="#more" class="more-link" data-id="<?= htmlspecialchars($card["id"]) ?>">
+                          <img src="../Images/icons/more.png" alt="More Icon" />
+                      </a>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -149,5 +163,6 @@ $dal->closeConn();
 </main>
 
 <script src="../js/mainPage.js"></script>
+<script src="../js/iconLogic.js"></script>
 </body>
 </html>
